@@ -1,5 +1,5 @@
 ---
-title: "Proposal"
+title: "Project Proposal"
 author: Theresa Louise Binnings
 format: html
 execute: 
@@ -9,7 +9,7 @@ execute:
   
 ---
 
-##Data Description
+## Data Description
 
 **Identify your data source:** 
 
@@ -17,41 +17,75 @@ Data source is NSF (U.S. National Science Foundation).  Specifically these table
 
 **Describe your data, including variables and data types.**
 
+The data is the number of male/female people of different race categories that are employed in major Science and Engineering fields along with disability status and type of disability.
 
-Identify the research questions you want to answer.
-Data Visualization
-What do you want your final visualizations to look like?
-What do you want to highlight on your final visualizations in order to answer your research questions? How do you plan to do that?
-What is missing from your data or would need to change in your data to create these visualizations?
-Data Cleaning
+All variables are: Science/Engineering Fields, Sex, Race, Number (count) of employees in each category.
+
+The quantities of each type is an integer value, Sex is a string/character, Race is a String and STEM field type is a string.
+
+**Identify the research questions you want to answer.**
+
+How do the number of men and women in major STEM fields (BIO, COMPUTER SCI, PHYSICAL, SOCIAL, ENGINEER, etc.) compare to one another?
+
+How do the different race categories compare to one another?
+
+Have there been any shifts in those proportions between 2019 and 2023?
+
+## Data Visualization
+
+**What do you want your final visualizations to look like?**
+
+I think it might want to try to figure out how to do a circular bar chart to show the different quantities of individuals of each race across the major STEM fields...
+
+Or a bar chart would work too -- but the grouping with the various main STEM majors to see how race varies across the different areas would be awesome.
+
+I think a normal bar chart of men/women for each major STEM field would work
+
+It could be interesting to try to do a circular pie chart with female vs male and then all of the different race or major type...
+
+**What do you want to highlight on your final visualizations in order to answer your research questions?** 
+
+I want to highlight the difference in Men/Women and White People/Non white people....
+
+Looking at Men/Women ratios from 2019 to 2023 would also be something I want to investigate and highlight if there is a distinct difference...
+
+**How do you plan to do that?**
+
+I think it would be awesome to try to do a circular bar chart like I described above of the different count values of the race categories across the different majors (majors could be delineated with differing colors)
+
+**What is missing from your data or would need to change in your data to create these visualizations?**
+
+The missing piece in my data is data on Native Americans and the count of their representation in certain subgroups...
+
+## Data Cleaning
+
 The answer to at least three of these questions should be “YES” for the data to meet the necessary standards to demonstrate your cleaning. Your data source should not be an already perfectly prepared data set.
 
-Do you need to reformat any variables into different types (e.g. factors, time, dates, strings)? Or remove information from variable values?
-Do you need to deal with any missing data, especially missing data coded other than NA?
-Do you need to filter your data? How?
-Do you need to create any new variables? What variables? How?
-Do you need to add new data (join) to your data? What data? How?
-Do you need pivot your data in any way? Why? How?
-Do you need to summarize any of the variables? Which ones? How?
-What other aspects of your data need to be “fixed” in order to make your data visualizations?
-Most will answer yes to the following for making your programming more efficient using select(), but you should have three other yeses above.
+**Do you need to reformat any variables into different types (e.g. factors, time, dates, strings)? Or remove information from variable values?**
 
-Are there any variables you can exclude from your data?
-Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+Will need to address the D and S values and potentially recaterogize that data in that area as integer if those spots cause the data to be read in as a string.
 
-## Running Code
+**Do you need to deal with any missing data, especially missing data coded other than NA?**
+There is data that is coded with D and S and * that I need to deal with and determine how to fill in those pieces -- it is related to the representation of Native Americans so I would like to include data showing how low their representation is but there is holes in that part of the dataset.
 
-When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
+**Do you need to filter your data? How?**
+I think I want to filter out the disability data and just focus on race and sex.
 
-```{r}
+**Do you need to create any new variables? What variables? How?**
+Could potentially create new ratio variables?  Or a year variable if I join the two tables.
 
-```
+**Do you need to add new data (join) to your data? What data? How?** YES
+Could potentially join the 2 data tables and create a year variable?  How would I do this?  I could do a full join potentially based around each of the major STEM category types?
 
-You can add options to executable code like this 
+**Do you need pivot your data in any way? Why? How?** YES
+I will need to pivot my data.  The race is on the top for column names but I need to put it into a column.  The female/Male data is shown through subheadings from the first row and so that needs to be pivoted to be in a column -- does that work to be pivoted?  Or is there another way to approach the subheading of the first column/row...?
 
-```{r}
-#| echo: false
-2 * 2
-```
+*Do you need to summarize any of the variables? Which ones? How?*
 
-The `echo: false` option disables the printing of code (only output is displayed).
+*What other aspects of your data need to be “fixed” in order to make your data visualizations?*
+
+*Most will answer yes to the following for making your programming more efficient using select(), but you should have three other yeses above.*
+
+**Are there any variables you can exclude from your data?**
+
+I think I can excluded the variables related to disabilities because I want to focus on race/sex.
