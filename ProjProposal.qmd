@@ -89,3 +89,173 @@ I will need to pivot my data.  The race is on the top for column names but I nee
 **Are there any variables you can exclude from your data?**
 
 I think I can excluded the variables related to disabilities because I want to focus on race/sex.
+
+```{r}
+#| label: load-packages
+
+#search - 'how to read in excel data with tidyverse' -- must also load readxl which is tidyverse package
+
+library(tidyverse)
+library(readxl)
+
+```
+
+```{r}
+#| label: read-data
+
+tbl2019_STEMfields_initial_raw <- read_excel("data-raw/nsf22310-tab001-005.xlsx")
+                                         
+tbl2019_STEMfields <- read_excel("data-raw/nsf22310-tab001-005.xlsx", 
+                                 skip = 15, 
+                                 col_names = c("field", "total", "hisp_lat", "amer_ind_alaskan", "asian", "black_afri_amer", "nat_hawaii_pacific_islander", "white", "multi_race", "a", "b", "c", "d", "e", "f", "g"),
+                                 na = c("D", "N", "*", "S"))
+
+```
+
+
+```{r}
+#| label: drop-disability-data
+
+tbl2019_STEMfields <- tbl2019_STEMfields |>
+  select("field", "total", "hisp_lat", "amer_ind_alaskan", "asian", "black_afri_amer", "nat_hawaii_pacific_islander", "white", "multi_race")
+
+```
+
+```{r}
+#| label: pivot-longer
+#race as label
+
+tbl2019_STEMfields <- tbl2019_STEMfields |>
+  pivot_longer(!c(field, total), 
+               names_to = "ethnicity_race", 
+               values_to = "count")
+```
+
+```{r}
+#| label: drop-total-row
+#total row does not reflect proper counts in this context any longer
+
+tbl2019_STEMfields <- tbl2019_STEMfields |>
+  select(-total)
+```
+
+
+```{r}
+#| label: drop-male-female-rows
+#google 'how to drop rows in R tidyverse' --> use slice
+
+tbl2019_STEMfields <- tbl2019_STEMfields |>
+  slice(-c(57:63))
+
+```
+
+```{r}
+#| label: add-sex-col
+# googled: 'can I use case_when for rows?' -- 'row_number()' search ?row_number() in R
+#stuck -- why does "row_number(1:56) ~ "female", row_number(57:112) ~ "male")" not work?
+
+tbl2019_STEMfields <- tbl2019_STEMfields |>
+  mutate(sex = case_when(
+    row_number() <= 56 ~ "female",
+    row_number() > 56 & row_number() <= 112 ~ "male"))
+
+```
+
+
+```{r}
+#| label: remove-SE_field-general-rows
+
+tbl2019_STEMfields <- tbl2019_STEMfields |>
+  filter(field != "S&E fields")
+```
+
+
+
+```{r}
+#| label: add-SE_field-col
+#reference in class assignment PA_6
+	
+tbl2019_STEMfields <- tbl2019_STEMfields |>
+  mutate(sex = case_when(
+    field == "S&E-related fields" ~ "SE_related_fields",
+    field == "Non-S&E fields" ~ "non_SE_fields",
+    .default = "SE_field"))
+
+```
+
+
+```{r}
+#| label: single-code-chunk-clean-data-2019
+#single code chuck data
+
+tbl2019_STEMfields_clean <- read_excel("data-raw/nsf22310-tab001-005.xlsx", 
+                                 skip = 15, 
+                                 col_names = c("field", "total", "hisp_lat", "amer_ind_alaskan", "asian", "black_afri_amer", "nat_hawaii_pacific_islander", "white", "multi_race", "a", "b", "c", "d", "e", "f", "g"),
+                                 na = c("D", "N", "*", "S")) |>
+  select("field", "total", "hisp_lat", "amer_ind_alaskan", "asian", "black_afri_amer", "nat_hawaii_pacific_islander", "white", "multi_race") |>
+  pivot_longer(!c(field, total), 
+               names_to = "ethnicity_race", 
+               values_to = "count") |>
+  select(-total) |>
+  slice(-c(57:63)) |>
+  mutate(sex = case_when(
+    row_number() <= 56 ~ "female",
+    row_number() > 56 & row_number() <= 112 ~ "male")) |>
+  filter(field != "S&E fields") |>
+  mutate(sex = case_when(
+    field == "S&E-related fields" ~ "SE_related_fields",
+    field == "Non-S&E fields" ~ "non_SE_fields",
+    .default = "SE_field"))
+
+```
+
+
+```{r}
+#| label: write-clean-2019-data-to-folder
+
+write_csv(tbl2019_STEMfields_clean, file = "data-clean/tbl2019_STEMfields_clean.csv")
+```
+
+```{r}
+#| label: single-code-chunk-clean-data-2023
+#single code chuck data
+#investigated 2023 data table to make sure that structure was identical to 2019 structure -- same code structure cleans data
+
+tbl2023_STEMfields_raw<- read_excel("data-raw/nsf25322-tab001-005.xlsx")
+
+tbl2023_STEMfields_clean<- read_excel("data-raw/nsf25322-tab001-005.xlsx", 
+                                 skip = 15, 
+                                 col_names = c("field", 
+                                               "total", 
+                                               "hisp_lat", 
+                                               "amer_ind_alaskan", 
+                                               "asian", 
+                                               "black_afri_amer", 
+                                               "nat_hawaii_pacific_islander", 
+                                               "white", 
+                                               "multi_race", 
+                                               "a", "b", "c", "d", "e", "f", "g"),
+                                 na = c("D", "N", "*", "S")) |>
+  select("field", "total", "hisp_lat", "amer_ind_alaskan", "asian", "black_afri_amer", "nat_hawaii_pacific_islander", "white", "multi_race") |>
+  pivot_longer(!c(field, total), 
+               names_to = "ethnicity_race", 
+               values_to = "count") |>
+  select(-total) |>
+  slice(-c(57:63)) |>
+  mutate(sex = case_when(
+    row_number() <= 56 ~ "female",
+    row_number() > 56 & row_number() <= 112 ~ "male")) |>
+  filter(field != "S&E fields") |>
+  mutate(sex = case_when(
+    field == "S&E-related fields" ~ "SE_related_fields",
+    field == "Non-S&E fields" ~ "non_SE_fields",
+    .default = "SE_field"))
+
+```
+```{r}
+#| label: write-clean-2023-data-to-folder
+
+write_csv(tbl2023_STEMfields_clean, file = "data-clean/tbl2023_STEMfields_clean.csv")
+```
+
+**Do I need to clean variables using janitor? Next pieces are add total column for each gender, add ratio of count for each field/total gender count, add total col for each ethnicity (both gender), ratio of each field count/total ethnicity count**
