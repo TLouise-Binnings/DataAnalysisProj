@@ -258,8 +258,6 @@ tbl2023_STEMfields_clean<- read_excel("data-raw/nsf25322-tab001-005.xlsx",
 write_csv(tbl2023_STEMfields_clean, file = "data-clean/tbl2023_STEMfields_clean.csv")
 ```
 
-<<<<<<< HEAD
-**Do I need to clean variables using janitor? Next pieces are add total column for each gender, add ratio of count for each field/total gender count, add total col for each ethnicity (both gender), ratio of each field count/total ethnicity count**
 
 
 ```{r}
@@ -277,7 +275,6 @@ ggplot(tbl2019_STEMfields_clean, aes(x=field, y=count, fill=field)) +
 
 ```{r}
 #| label: read-in-2019-degree-types-data
-
 
 tbl2019_DegreeType_raw<- read_excel("data-raw/nsf22310-tab002-001.xlsx",
                                     skip = 15,
@@ -301,5 +298,5 @@ tbl2019_DegreeType_raw<- read_excel("data-raw/nsf22310-tab002-001.xlsx",
 #split table into race and then female/male
 ```
 
-=======
+
 **Do I need to clean variables using janitor? Next pieces are add total column for each gender, add ratio of count for each field/total gender count, add total col for each ethnicity (both gender), ratio of each field count/total ethnicity count**
