@@ -1,99 +1,99 @@
-field,ethnicity_race,count,sex
-"Biological, agricultural, and environmental life sciences",hisp_lat,31000,SE_field
-"Biological, agricultural, and environmental life sciences",amer_ind_alaskan,NA,SE_field
-"Biological, agricultural, and environmental life sciences",asian,81000,SE_field
-"Biological, agricultural, and environmental life sciences",black_afri_amer,19000,SE_field
-"Biological, agricultural, and environmental life sciences",nat_hawaii_pacific_islander,NA,SE_field
-"Biological, agricultural, and environmental life sciences",white,242000,SE_field
-"Biological, agricultural, and environmental life sciences",multi_race,9000,SE_field
-Computer and mathematical sciences,hisp_lat,35000,SE_field
-Computer and mathematical sciences,amer_ind_alaskan,NA,SE_field
-Computer and mathematical sciences,asian,184000,SE_field
-Computer and mathematical sciences,black_afri_amer,41000,SE_field
-Computer and mathematical sciences,nat_hawaii_pacific_islander,NA,SE_field
-Computer and mathematical sciences,white,189000,SE_field
-Computer and mathematical sciences,multi_race,12000,SE_field
-Physical and related sciences,hisp_lat,10000,SE_field
-Physical and related sciences,amer_ind_alaskan,NA,SE_field
-Physical and related sciences,asian,20000,SE_field
-Physical and related sciences,black_afri_amer,4000,SE_field
-Physical and related sciences,nat_hawaii_pacific_islander,NA,SE_field
-Physical and related sciences,white,96000,SE_field
-Physical and related sciences,multi_race,3000,SE_field
-Social and related sciences,hisp_lat,51000,SE_field
-Social and related sciences,amer_ind_alaskan,NA,SE_field
-Social and related sciences,asian,47000,SE_field
-Social and related sciences,black_afri_amer,27000,SE_field
-Social and related sciences,nat_hawaii_pacific_islander,NA,SE_field
-Social and related sciences,white,232000,SE_field
-Social and related sciences,multi_race,8000,SE_field
-Engineering,hisp_lat,40000,SE_field
-Engineering,amer_ind_alaskan,NA,SE_field
-Engineering,asian,116000,SE_field
-Engineering,black_afri_amer,12000,SE_field
-Engineering,nat_hawaii_pacific_islander,NA,SE_field
-Engineering,white,221000,SE_field
-Engineering,multi_race,12000,SE_field
-S&E-related fields,hisp_lat,10000,SE_related_fields
-S&E-related fields,amer_ind_alaskan,NA,SE_related_fields
-S&E-related fields,asian,37000,SE_related_fields
-S&E-related fields,black_afri_amer,19000,SE_related_fields
-S&E-related fields,nat_hawaii_pacific_islander,NA,SE_related_fields
-S&E-related fields,white,143000,SE_related_fields
-S&E-related fields,multi_race,NA,SE_related_fields
-Non-S&E fields,hisp_lat,74000,non_SE_fields
-Non-S&E fields,amer_ind_alaskan,NA,non_SE_fields
-Non-S&E fields,asian,92000,non_SE_fields
-Non-S&E fields,black_afri_amer,54000,non_SE_fields
-Non-S&E fields,nat_hawaii_pacific_islander,NA,non_SE_fields
-Non-S&E fields,white,389000,non_SE_fields
-Non-S&E fields,multi_race,12000,non_SE_fields
-"Biological, agricultural, and environmental life sciences",hisp_lat,42000,SE_field
-"Biological, agricultural, and environmental life sciences",amer_ind_alaskan,NA,SE_field
-"Biological, agricultural, and environmental life sciences",asian,58000,SE_field
-"Biological, agricultural, and environmental life sciences",black_afri_amer,11000,SE_field
-"Biological, agricultural, and environmental life sciences",nat_hawaii_pacific_islander,NA,SE_field
-"Biological, agricultural, and environmental life sciences",white,258000,SE_field
-"Biological, agricultural, and environmental life sciences",multi_race,8000,SE_field
-Computer and mathematical sciences,hisp_lat,152000,SE_field
-Computer and mathematical sciences,amer_ind_alaskan,NA,SE_field
-Computer and mathematical sciences,asian,405000,SE_field
-Computer and mathematical sciences,black_afri_amer,103000,SE_field
-Computer and mathematical sciences,nat_hawaii_pacific_islander,NA,SE_field
-Computer and mathematical sciences,white,926000,SE_field
-Computer and mathematical sciences,multi_race,54000,SE_field
-Physical and related sciences,hisp_lat,30000,SE_field
-Physical and related sciences,amer_ind_alaskan,NA,SE_field
-Physical and related sciences,asian,52000,SE_field
-Physical and related sciences,black_afri_amer,12000,SE_field
-Physical and related sciences,nat_hawaii_pacific_islander,NA,SE_field
-Physical and related sciences,white,240000,SE_field
-Physical and related sciences,multi_race,7000,SE_field
-Social and related sciences,hisp_lat,37000,SE_field
-Social and related sciences,amer_ind_alaskan,NA,SE_field
-Social and related sciences,asian,24000,SE_field
-Social and related sciences,black_afri_amer,21000,SE_field
-Social and related sciences,nat_hawaii_pacific_islander,NA,SE_field
-Social and related sciences,white,278000,SE_field
-Social and related sciences,multi_race,10000,SE_field
-Engineering,hisp_lat,184000,SE_field
-Engineering,amer_ind_alaskan,1000,SE_field
-Engineering,asian,469000,SE_field
-Engineering,black_afri_amer,79000,SE_field
-Engineering,nat_hawaii_pacific_islander,NA,SE_field
-Engineering,white,1255000,SE_field
-Engineering,multi_race,47000,SE_field
-S&E-related fields,hisp_lat,32000,SE_related_fields
-S&E-related fields,amer_ind_alaskan,NA,SE_related_fields
-S&E-related fields,asian,71000,SE_related_fields
-S&E-related fields,black_afri_amer,21000,SE_related_fields
-S&E-related fields,nat_hawaii_pacific_islander,NA,SE_related_fields
-S&E-related fields,white,179000,SE_related_fields
-S&E-related fields,multi_race,10000,SE_related_fields
-Non-S&E fields,hisp_lat,123000,non_SE_fields
-Non-S&E fields,amer_ind_alaskan,NA,non_SE_fields
-Non-S&E fields,asian,114000,non_SE_fields
-Non-S&E fields,black_afri_amer,65000,non_SE_fields
-Non-S&E fields,nat_hawaii_pacific_islander,NA,non_SE_fields
-Non-S&E fields,white,705000,non_SE_fields
-Non-S&E fields,multi_race,30000,non_SE_fields
+field,ethnicity_race,count,sex,SE_type
+"Biological, agricultural, and environmental life sciences",hisp_lat,31000,female,SE_field
+"Biological, agricultural, and environmental life sciences",amer_ind_alaskan,NA,female,SE_field
+"Biological, agricultural, and environmental life sciences",asian,81000,female,SE_field
+"Biological, agricultural, and environmental life sciences",black_afri_amer,19000,female,SE_field
+"Biological, agricultural, and environmental life sciences",nat_hawaii_pacific_islander,NA,female,SE_field
+"Biological, agricultural, and environmental life sciences",white,242000,female,SE_field
+"Biological, agricultural, and environmental life sciences",multi_race,9000,female,SE_field
+Computer and mathematical sciences,hisp_lat,35000,female,SE_field
+Computer and mathematical sciences,amer_ind_alaskan,NA,female,SE_field
+Computer and mathematical sciences,asian,184000,female,SE_field
+Computer and mathematical sciences,black_afri_amer,41000,female,SE_field
+Computer and mathematical sciences,nat_hawaii_pacific_islander,NA,female,SE_field
+Computer and mathematical sciences,white,189000,female,SE_field
+Computer and mathematical sciences,multi_race,12000,female,SE_field
+Physical and related sciences,hisp_lat,10000,female,SE_field
+Physical and related sciences,amer_ind_alaskan,NA,female,SE_field
+Physical and related sciences,asian,20000,female,SE_field
+Physical and related sciences,black_afri_amer,4000,female,SE_field
+Physical and related sciences,nat_hawaii_pacific_islander,NA,female,SE_field
+Physical and related sciences,white,96000,female,SE_field
+Physical and related sciences,multi_race,3000,female,SE_field
+Social and related sciences,hisp_lat,51000,female,SE_field
+Social and related sciences,amer_ind_alaskan,NA,female,SE_field
+Social and related sciences,asian,47000,female,SE_field
+Social and related sciences,black_afri_amer,27000,female,SE_field
+Social and related sciences,nat_hawaii_pacific_islander,NA,female,SE_field
+Social and related sciences,white,232000,female,SE_field
+Social and related sciences,multi_race,8000,female,SE_field
+Engineering,hisp_lat,40000,female,SE_field
+Engineering,amer_ind_alaskan,NA,female,SE_field
+Engineering,asian,116000,female,SE_field
+Engineering,black_afri_amer,12000,female,SE_field
+Engineering,nat_hawaii_pacific_islander,NA,female,SE_field
+Engineering,white,221000,female,SE_field
+Engineering,multi_race,12000,female,SE_field
+S&E-related fields,hisp_lat,10000,female,SE_related_fields
+S&E-related fields,amer_ind_alaskan,NA,female,SE_related_fields
+S&E-related fields,asian,37000,female,SE_related_fields
+S&E-related fields,black_afri_amer,19000,female,SE_related_fields
+S&E-related fields,nat_hawaii_pacific_islander,NA,female,SE_related_fields
+S&E-related fields,white,143000,female,SE_related_fields
+S&E-related fields,multi_race,NA,female,SE_related_fields
+Non-S&E fields,hisp_lat,74000,female,non_SE_fields
+Non-S&E fields,amer_ind_alaskan,NA,female,non_SE_fields
+Non-S&E fields,asian,92000,female,non_SE_fields
+Non-S&E fields,black_afri_amer,54000,female,non_SE_fields
+Non-S&E fields,nat_hawaii_pacific_islander,NA,female,non_SE_fields
+Non-S&E fields,white,389000,female,non_SE_fields
+Non-S&E fields,multi_race,12000,female,non_SE_fields
+"Biological, agricultural, and environmental life sciences",hisp_lat,42000,male,SE_field
+"Biological, agricultural, and environmental life sciences",amer_ind_alaskan,NA,male,SE_field
+"Biological, agricultural, and environmental life sciences",asian,58000,male,SE_field
+"Biological, agricultural, and environmental life sciences",black_afri_amer,11000,male,SE_field
+"Biological, agricultural, and environmental life sciences",nat_hawaii_pacific_islander,NA,male,SE_field
+"Biological, agricultural, and environmental life sciences",white,258000,male,SE_field
+"Biological, agricultural, and environmental life sciences",multi_race,8000,male,SE_field
+Computer and mathematical sciences,hisp_lat,152000,male,SE_field
+Computer and mathematical sciences,amer_ind_alaskan,NA,male,SE_field
+Computer and mathematical sciences,asian,405000,male,SE_field
+Computer and mathematical sciences,black_afri_amer,103000,male,SE_field
+Computer and mathematical sciences,nat_hawaii_pacific_islander,NA,male,SE_field
+Computer and mathematical sciences,white,926000,male,SE_field
+Computer and mathematical sciences,multi_race,54000,male,SE_field
+Physical and related sciences,hisp_lat,30000,male,SE_field
+Physical and related sciences,amer_ind_alaskan,NA,male,SE_field
+Physical and related sciences,asian,52000,male,SE_field
+Physical and related sciences,black_afri_amer,12000,male,SE_field
+Physical and related sciences,nat_hawaii_pacific_islander,NA,male,SE_field
+Physical and related sciences,white,240000,male,SE_field
+Physical and related sciences,multi_race,7000,male,SE_field
+Social and related sciences,hisp_lat,37000,male,SE_field
+Social and related sciences,amer_ind_alaskan,NA,male,SE_field
+Social and related sciences,asian,24000,male,SE_field
+Social and related sciences,black_afri_amer,21000,male,SE_field
+Social and related sciences,nat_hawaii_pacific_islander,NA,male,SE_field
+Social and related sciences,white,278000,male,SE_field
+Social and related sciences,multi_race,10000,male,SE_field
+Engineering,hisp_lat,184000,male,SE_field
+Engineering,amer_ind_alaskan,1000,male,SE_field
+Engineering,asian,469000,male,SE_field
+Engineering,black_afri_amer,79000,male,SE_field
+Engineering,nat_hawaii_pacific_islander,NA,male,SE_field
+Engineering,white,1255000,male,SE_field
+Engineering,multi_race,47000,male,SE_field
+S&E-related fields,hisp_lat,32000,male,SE_related_fields
+S&E-related fields,amer_ind_alaskan,NA,male,SE_related_fields
+S&E-related fields,asian,71000,male,SE_related_fields
+S&E-related fields,black_afri_amer,21000,male,SE_related_fields
+S&E-related fields,nat_hawaii_pacific_islander,NA,male,SE_related_fields
+S&E-related fields,white,179000,male,SE_related_fields
+S&E-related fields,multi_race,10000,male,SE_related_fields
+Non-S&E fields,hisp_lat,123000,male,non_SE_fields
+Non-S&E fields,amer_ind_alaskan,NA,male,non_SE_fields
+Non-S&E fields,asian,114000,male,non_SE_fields
+Non-S&E fields,black_afri_amer,65000,male,non_SE_fields
+Non-S&E fields,nat_hawaii_pacific_islander,NA,male,non_SE_fields
+Non-S&E fields,white,705000,male,non_SE_fields
+Non-S&E fields,multi_race,30000,male,non_SE_fields

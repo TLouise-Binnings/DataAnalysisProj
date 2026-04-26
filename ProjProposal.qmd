@@ -176,7 +176,7 @@ tbl2019_STEMfields <- tbl2019_STEMfields |>
 #reference in class assignment PA_6
 	
 tbl2019_STEMfields <- tbl2019_STEMfields |>
-  mutate(sex = case_when(
+  mutate(SE_type = case_when(
     field == "S&E-related fields" ~ "SE_related_fields",
     field == "Non-S&E fields" ~ "non_SE_fields",
     .default = "SE_field"))
@@ -202,7 +202,7 @@ tbl2019_STEMfields_clean <- read_excel("data-raw/nsf22310-tab001-005.xlsx",
     row_number() <= 56 ~ "female",
     row_number() > 56 & row_number() <= 112 ~ "male")) |>
   filter(field != "S&E fields") |>
-  mutate(sex = case_when(
+  mutate(SE_type = case_when(
     field == "S&E-related fields" ~ "SE_related_fields",
     field == "Non-S&E fields" ~ "non_SE_fields",
     .default = "SE_field"))
@@ -246,7 +246,7 @@ tbl2023_STEMfields_clean<- read_excel("data-raw/nsf25322-tab001-005.xlsx",
     row_number() <= 56 ~ "female",
     row_number() > 56 & row_number() <= 112 ~ "male")) |>
   filter(field != "S&E fields") |>
-  mutate(sex = case_when(
+  mutate(SE_type = case_when(
     field == "S&E-related fields" ~ "SE_related_fields",
     field == "Non-S&E fields" ~ "non_SE_fields",
     .default = "SE_field"))
@@ -259,3 +259,40 @@ write_csv(tbl2023_STEMfields_clean, file = "data-clean/tbl2023_STEMfields_clean.
 ```
 
 **Do I need to clean variables using janitor? Next pieces are add total column for each gender, add ratio of count for each field/total gender count, add total col for each ethnicity (both gender), ratio of each field count/total ethnicity count**
+
+
+```{r}
+#| label: ggplot
+#https://r-graph-gallery.com/297-circular-barplot-with-groups.html 
+
+ggplot(tbl2019_STEMfields_clean, aes(x=field, y=count, fill=field)) + 
+  geom_col() +
+  coord_polar() +
+  theme_classic() +
+  scale_fill_viridis_d()
+
+```
+```{r}
+#| label: read-in-2019-degree-types-data
+
+
+tbl2019_DegreeType_raw<- read_excel("data-raw/nsf22310-tab002-001.xlsx",
+                                    skip = 15,
+                                    col_names = c("field", 
+                                               "total", 
+                                               "female", 
+                                               "male",
+                                               "hisp_lat", 
+                                               "amer_ind_alaskan", 
+                                               "asian", 
+                                               "black_afri_amer", 
+                                               "nat_hawaii_pacific_islander", 
+                                               "white", 
+                                               "multi_race", 
+                                               "a", "b"),
+                                    na = c("D", "S", "*")) |>
+  select(c("field", "female", "male", "hisp_lat", "amer_ind_alaskan", "asian", "black_afri_amer", "nat_hawaii_pacific_islander", "white", "multi_race")) 
+#|
+  #pivot_longer(!field, names_to = "ethnicity_race", values_to = "count")
+```
+
