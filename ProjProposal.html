@@ -167,24 +167,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 ✖ dplyr::lag()    masks stats::lag()
 ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
 </div>
-<<<<<<< HEAD
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>tbl2019_STEMfields_initial_raw <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"data-raw/nsf22310-tab001-005.xlsx"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-=======
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>
-Attaching package: 'janitor'
-
-The following objects are masked from 'package:stats':
-
-    chisq.test, fisher.test</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>tbl2019_STEMfields_initial_raw <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"data-raw/nsf22310-tab001-005.xlsx"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
->>>>>>> b784cf0a2f7588a127dccca1ae293b2b908e9b01
 <div class="cell-output cell-output-stderr">
 <pre><code>New names:
 • `` -&gt; `...2`
@@ -203,7 +189,6 @@ The following objects are masked from 'package:stats':
 • `` -&gt; `...15`
 • `` -&gt; `...16`</code></pre>
 </div>
-<<<<<<< HEAD
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>tbl2019_STEMfields <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"data-raw/nsf22310-tab001-005.xlsx"</span>, </span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">skip =</span> <span class="dv">15</span>, </span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">col_names =</span> <span class="fu">c</span>(<span class="st">"field"</span>, <span class="st">"total"</span>, <span class="st">"hisp_lat"</span>, <span class="st">"amer_ind_alaskan"</span>, <span class="st">"asian"</span>, <span class="st">"black_afri_amer"</span>, <span class="st">"nat_hawaii_pacific_islander"</span>, <span class="st">"white"</span>, <span class="st">"multi_race"</span>, <span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>, <span class="st">"d"</span>, <span class="st">"e"</span>, <span class="st">"f"</span>, <span class="st">"g"</span>),</span>
@@ -225,7 +210,7 @@ The following objects are masked from 'package:stats':
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#total row does not reflect proper counts in this context any longer</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>tbl2019_STEMfields <span class="ot">&lt;-</span> tbl2019_STEMfields <span class="sc">|&gt;</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>total)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">!</span>total)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">#google 'how to drop rows in R tidyverse' --&gt; use slice</span></span>
@@ -250,7 +235,7 @@ The following objects are masked from 'package:stats':
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">#reference in class assignment PA_6</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>tbl2019_STEMfields <span class="ot">&lt;-</span> tbl2019_STEMfields <span class="sc">|&gt;</span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sex =</span> <span class="fu">case_when</span>(</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">SE_type =</span> <span class="fu">case_when</span>(</span>
 <span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    field <span class="sc">==</span> <span class="st">"S&amp;E-related fields"</span> <span class="sc">~</span> <span class="st">"SE_related_fields"</span>,</span>
 <span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    field <span class="sc">==</span> <span class="st">"Non-S&amp;E fields"</span> <span class="sc">~</span> <span class="st">"non_SE_fields"</span>,</span>
 <span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">.default =</span> <span class="st">"SE_field"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -266,13 +251,13 @@ The following objects are masked from 'package:stats':
 <span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="sc">!</span><span class="fu">c</span>(field, total), </span>
 <span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"ethnicity_race"</span>, </span>
 <span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"count"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>total) <span class="sc">|&gt;</span></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">!</span>total) <span class="sc">|&gt;</span></span>
 <span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="sc">-</span><span class="fu">c</span>(<span class="dv">57</span><span class="sc">:</span><span class="dv">63</span>)) <span class="sc">|&gt;</span></span>
 <span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sex =</span> <span class="fu">case_when</span>(</span>
 <span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">row_number</span>() <span class="sc">&lt;=</span> <span class="dv">56</span> <span class="sc">~</span> <span class="st">"female"</span>,</span>
 <span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">row_number</span>() <span class="sc">&gt;</span> <span class="dv">56</span> <span class="sc">&amp;</span> <span class="fu">row_number</span>() <span class="sc">&lt;=</span> <span class="dv">112</span> <span class="sc">~</span> <span class="st">"male"</span>)) <span class="sc">|&gt;</span></span>
 <span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(field <span class="sc">!=</span> <span class="st">"S&amp;E fields"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sex =</span> <span class="fu">case_when</span>(</span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">SE_type =</span> <span class="fu">case_when</span>(</span>
 <span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>    field <span class="sc">==</span> <span class="st">"S&amp;E-related fields"</span> <span class="sc">~</span> <span class="st">"SE_related_fields"</span>,</span>
 <span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>    field <span class="sc">==</span> <span class="st">"Non-S&amp;E fields"</span> <span class="sc">~</span> <span class="st">"non_SE_fields"</span>,</span>
 <span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">.default =</span> <span class="st">"SE_field"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -283,91 +268,9 @@ The following objects are masked from 'package:stats':
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">#single code chuck data</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="co">#investigated 2023 data table to make sure that structure was identical to 2019 structure -- same code structure cleans data</span></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>tbl2023_STEMfields_raw<span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"data-raw/nsf25322-tab001-005.xlsx"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-=======
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>tbl2019_STEMfields <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"data-raw/nsf22310-tab001-005.xlsx"</span>, </span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">skip =</span> <span class="dv">15</span>, </span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">col_names =</span> <span class="fu">c</span>(<span class="st">"field"</span>, <span class="st">"total"</span>, <span class="st">"hisp_lat"</span>, <span class="st">"amer_ind_alaskan"</span>, <span class="st">"asian"</span>, <span class="st">"black_afri_amer"</span>, <span class="st">"nat_hawaii_pacific_islander"</span>, <span class="st">"white"</span>, <span class="st">"multi_race"</span>, <span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>, <span class="st">"d"</span>, <span class="st">"e"</span>, <span class="st">"f"</span>, <span class="st">"g"</span>),</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">na =</span> <span class="fu">c</span>(<span class="st">"D"</span>, <span class="st">"N"</span>, <span class="st">"*"</span>, <span class="st">"S"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>tbl2019_STEMfields <span class="ot">&lt;-</span> tbl2019_STEMfields <span class="sc">|&gt;</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="st">"field"</span>, <span class="st">"total"</span>, <span class="st">"hisp_lat"</span>, <span class="st">"amer_ind_alaskan"</span>, <span class="st">"asian"</span>, <span class="st">"black_afri_amer"</span>, <span class="st">"nat_hawaii_pacific_islander"</span>, <span class="st">"white"</span>, <span class="st">"multi_race"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#race as label</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>tbl2019_STEMfields <span class="ot">&lt;-</span> tbl2019_STEMfields <span class="sc">|&gt;</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="sc">!</span><span class="fu">c</span>(field, total), </span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"ethnicity_race"</span>, </span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"count"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">#total row does not reflect proper counts in this context any longer</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>tbl2019_STEMfields <span class="ot">&lt;-</span> tbl2019_STEMfields <span class="sc">|&gt;</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>total)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">#google 'how to drop rows in R tidyverse' --&gt; use slice</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>tbl2019_STEMfields <span class="ot">&lt;-</span> tbl2019_STEMfields <span class="sc">|&gt;</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="sc">-</span><span class="fu">c</span>(<span class="dv">57</span><span class="sc">:</span><span class="dv">63</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># googled: 'can I use case_when for rows?' -- 'row_number()' search ?row_number() in R</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co">#stuck -- why does "row_number(1:56) ~ "female", row_number(57:112) ~ "male")" not work?</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>tbl2019_STEMfields <span class="ot">&lt;-</span> tbl2019_STEMfields <span class="sc">|&gt;</span></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sex =</span> <span class="fu">case_when</span>(</span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">row_number</span>() <span class="sc">&lt;=</span> <span class="dv">56</span> <span class="sc">~</span> <span class="st">"female"</span>,</span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">row_number</span>() <span class="sc">&gt;</span> <span class="dv">56</span> <span class="sc">&amp;</span> <span class="fu">row_number</span>() <span class="sc">&lt;=</span> <span class="dv">112</span> <span class="sc">~</span> <span class="st">"male"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>tbl2019_STEMfields <span class="ot">&lt;-</span> tbl2019_STEMfields <span class="sc">|&gt;</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(field <span class="sc">!=</span> <span class="st">"S&amp;E fields"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">#reference in class assignment PA_6</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>tbl2019_STEMfields <span class="ot">&lt;-</span> tbl2019_STEMfields <span class="sc">|&gt;</span></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sex =</span> <span class="fu">case_when</span>(</span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    field <span class="sc">==</span> <span class="st">"S&amp;E-related fields"</span> <span class="sc">~</span> <span class="st">"SE_related_fields"</span>,</span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    field <span class="sc">==</span> <span class="st">"Non-S&amp;E fields"</span> <span class="sc">~</span> <span class="st">"non_SE_fields"</span>,</span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">.default =</span> <span class="st">"SE_field"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">#single code chuck data</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>tbl2019_STEMfields_clean <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"data-raw/nsf22310-tab001-005.xlsx"</span>, </span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">skip =</span> <span class="dv">15</span>, </span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">col_names =</span> <span class="fu">c</span>(<span class="st">"field"</span>, <span class="st">"total"</span>, <span class="st">"hisp_lat"</span>, <span class="st">"amer_ind_alaskan"</span>, <span class="st">"asian"</span>, <span class="st">"black_afri_amer"</span>, <span class="st">"nat_hawaii_pacific_islander"</span>, <span class="st">"white"</span>, <span class="st">"multi_race"</span>, <span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>, <span class="st">"d"</span>, <span class="st">"e"</span>, <span class="st">"f"</span>, <span class="st">"g"</span>),</span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">na =</span> <span class="fu">c</span>(<span class="st">"D"</span>, <span class="st">"N"</span>, <span class="st">"*"</span>, <span class="st">"S"</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="st">"field"</span>, <span class="st">"total"</span>, <span class="st">"hisp_lat"</span>, <span class="st">"amer_ind_alaskan"</span>, <span class="st">"asian"</span>, <span class="st">"black_afri_amer"</span>, <span class="st">"nat_hawaii_pacific_islander"</span>, <span class="st">"white"</span>, <span class="st">"multi_race"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="sc">!</span><span class="fu">c</span>(field, total), </span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"ethnicity_race"</span>, </span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"count"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>total) <span class="sc">|&gt;</span></span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="sc">-</span><span class="fu">c</span>(<span class="dv">57</span><span class="sc">:</span><span class="dv">63</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sex =</span> <span class="fu">case_when</span>(</span>
-<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">row_number</span>() <span class="sc">&lt;=</span> <span class="dv">56</span> <span class="sc">~</span> <span class="st">"female"</span>,</span>
-<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">row_number</span>() <span class="sc">&gt;</span> <span class="dv">56</span> <span class="sc">&amp;</span> <span class="fu">row_number</span>() <span class="sc">&lt;=</span> <span class="dv">112</span> <span class="sc">~</span> <span class="st">"male"</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(field <span class="sc">!=</span> <span class="st">"S&amp;E fields"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sex =</span> <span class="fu">case_when</span>(</span>
-<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>    field <span class="sc">==</span> <span class="st">"S&amp;E-related fields"</span> <span class="sc">~</span> <span class="st">"SE_related_fields"</span>,</span>
-<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>    field <span class="sc">==</span> <span class="st">"Non-S&amp;E fields"</span> <span class="sc">~</span> <span class="st">"non_SE_fields"</span>,</span>
-<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">.default =</span> <span class="st">"SE_field"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(tbl2019_STEMfields_clean, <span class="at">file =</span> <span class="st">"data-clean/tbl2019_STEMfields_clean.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co">#single code chuck data</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="co">#investigated 2023 data table to make sure that structure was identical to 2019 structure -- same code structure cleans data</span></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>tbl2023_STEMfields_raw<span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"data-raw/nsf25322-tab001-005.xlsx"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
->>>>>>> b784cf0a2f7588a127dccca1ae293b2b908e9b01
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co">#"filter(field != "S&amp;E fields")" is done to eliminate the total rows</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>tbl2023_STEMfields_raw<span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"data-raw/nsf25322-tab001-005.xlsx"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>New names:
 • `` -&gt; `...2`
@@ -386,7 +289,6 @@ The following objects are masked from 'package:stats':
 • `` -&gt; `...15`
 • `` -&gt; `...16`</code></pre>
 </div>
-<<<<<<< HEAD
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>tbl2023_STEMfields_clean<span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"data-raw/nsf25322-tab001-005.xlsx"</span>, </span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">skip =</span> <span class="dv">15</span>, </span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">col_names =</span> <span class="fu">c</span>(<span class="st">"field"</span>, </span>
@@ -404,51 +306,161 @@ The following objects are masked from 'package:stats':
 <span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="sc">!</span><span class="fu">c</span>(field, total), </span>
 <span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"ethnicity_race"</span>, </span>
 <span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"count"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>total) <span class="sc">|&gt;</span></span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">!</span>total) <span class="sc">|&gt;</span></span>
 <span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="sc">-</span><span class="fu">c</span>(<span class="dv">57</span><span class="sc">:</span><span class="dv">63</span>)) <span class="sc">|&gt;</span></span>
 <span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sex =</span> <span class="fu">case_when</span>(</span>
 <span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">row_number</span>() <span class="sc">&lt;=</span> <span class="dv">56</span> <span class="sc">~</span> <span class="st">"female"</span>,</span>
 <span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">row_number</span>() <span class="sc">&gt;</span> <span class="dv">56</span> <span class="sc">&amp;</span> <span class="fu">row_number</span>() <span class="sc">&lt;=</span> <span class="dv">112</span> <span class="sc">~</span> <span class="st">"male"</span>)) <span class="sc">|&gt;</span></span>
 <span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(field <span class="sc">!=</span> <span class="st">"S&amp;E fields"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sex =</span> <span class="fu">case_when</span>(</span>
+<span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">SE_type =</span> <span class="fu">case_when</span>(</span>
 <span id="cb18-25"><a href="#cb18-25" aria-hidden="true" tabindex="-1"></a>    field <span class="sc">==</span> <span class="st">"S&amp;E-related fields"</span> <span class="sc">~</span> <span class="st">"SE_related_fields"</span>,</span>
 <span id="cb18-26"><a href="#cb18-26" aria-hidden="true" tabindex="-1"></a>    field <span class="sc">==</span> <span class="st">"Non-S&amp;E fields"</span> <span class="sc">~</span> <span class="st">"non_SE_fields"</span>,</span>
 <span id="cb18-27"><a href="#cb18-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">.default =</span> <span class="st">"SE_field"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(tbl2023_STEMfields_clean, <span class="at">file =</span> <span class="st">"data-clean/tbl2023_STEMfields_clean.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-=======
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>tbl2023_STEMfields_clean<span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"data-raw/nsf25322-tab001-005.xlsx"</span>, </span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">skip =</span> <span class="dv">15</span>, </span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">col_names =</span> <span class="fu">c</span>(<span class="st">"field"</span>, </span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>                                               <span class="st">"total"</span>, </span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>                                               <span class="st">"hisp_lat"</span>, </span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>                                               <span class="st">"amer_ind_alaskan"</span>, </span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>                                               <span class="st">"asian"</span>, </span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>                                               <span class="st">"black_afri_amer"</span>, </span>
-<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>                                               <span class="st">"nat_hawaii_pacific_islander"</span>, </span>
-<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>                                               <span class="st">"white"</span>, </span>
-<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>                                               <span class="st">"multi_race"</span>, </span>
-<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>                                               <span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>, <span class="st">"d"</span>, <span class="st">"e"</span>, <span class="st">"f"</span>, <span class="st">"g"</span>),</span>
-<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">na =</span> <span class="fu">c</span>(<span class="st">"D"</span>, <span class="st">"N"</span>, <span class="st">"*"</span>, <span class="st">"S"</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="st">"field"</span>, <span class="st">"total"</span>, <span class="st">"hisp_lat"</span>, <span class="st">"amer_ind_alaskan"</span>, <span class="st">"asian"</span>, <span class="st">"black_afri_amer"</span>, <span class="st">"nat_hawaii_pacific_islander"</span>, <span class="st">"white"</span>, <span class="st">"multi_race"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="sc">!</span><span class="fu">c</span>(field, total), </span>
-<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"ethnicity_race"</span>, </span>
-<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"count"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>total) <span class="sc">|&gt;</span></span>
-<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="sc">-</span><span class="fu">c</span>(<span class="dv">57</span><span class="sc">:</span><span class="dv">63</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sex =</span> <span class="fu">case_when</span>(</span>
-<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">row_number</span>() <span class="sc">&lt;=</span> <span class="dv">56</span> <span class="sc">~</span> <span class="st">"female"</span>,</span>
-<span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">row_number</span>() <span class="sc">&gt;</span> <span class="dv">56</span> <span class="sc">&amp;</span> <span class="fu">row_number</span>() <span class="sc">&lt;=</span> <span class="dv">112</span> <span class="sc">~</span> <span class="st">"male"</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb19-23"><a href="#cb19-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(field <span class="sc">!=</span> <span class="st">"S&amp;E fields"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb19-24"><a href="#cb19-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sex =</span> <span class="fu">case_when</span>(</span>
-<span id="cb19-25"><a href="#cb19-25" aria-hidden="true" tabindex="-1"></a>    field <span class="sc">==</span> <span class="st">"S&amp;E-related fields"</span> <span class="sc">~</span> <span class="st">"SE_related_fields"</span>,</span>
-<span id="cb19-26"><a href="#cb19-26" aria-hidden="true" tabindex="-1"></a>    field <span class="sc">==</span> <span class="st">"Non-S&amp;E fields"</span> <span class="sc">~</span> <span class="st">"non_SE_fields"</span>,</span>
-<span id="cb19-27"><a href="#cb19-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">.default =</span> <span class="st">"SE_field"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(tbl2023_STEMfields_clean, <span class="at">file =</span> <span class="st">"data-clean/tbl2023_STEMfields_clean.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
->>>>>>> b784cf0a2f7588a127dccca1ae293b2b908e9b01
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co">#https://r-graph-gallery.com/297-circular-barplot-with-groups.html </span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(tbl2019_STEMfields_clean, <span class="fu">aes</span>(<span class="at">x=</span>field, <span class="at">y=</span>count, <span class="at">fill=</span>field)) <span class="sc">+</span> </span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_polar</span>() <span class="sc">+</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_d</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 27 rows containing missing values or values outside the scale range
+(`geom_col()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="ProjProposal_files/figure-html/ggplot-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>tbl2019_DegreeType_raw<span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"data-raw/nsf22310-tab002-001.xlsx"</span>,</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">skip =</span> <span class="dv">15</span>,</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">col_names =</span> <span class="fu">c</span>(<span class="st">"field"</span>, </span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>                                               <span class="st">"total"</span>, </span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>                                               <span class="st">"female"</span>, </span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>                                               <span class="st">"male"</span>,</span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>                                               <span class="st">"hisp_lat"</span>, </span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>                                               <span class="st">"amer_ind_alaskan"</span>, </span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>                                               <span class="st">"asian"</span>, </span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>                                               <span class="st">"black_afri_amer"</span>, </span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>                                               <span class="st">"nat_hawaii_pacific_islander"</span>, </span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>                                               <span class="st">"white"</span>, </span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>                                               <span class="st">"multi_race"</span>, </span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>                                               <span class="st">"a"</span>, <span class="st">"b"</span>),</span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">na =</span> <span class="fu">c</span>(<span class="st">"D"</span>, <span class="st">"S"</span>, <span class="st">"*"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">c</span>(<span class="st">"field"</span>, <span class="st">"total"</span>, <span class="st">"female"</span>, <span class="st">"male"</span>, <span class="st">"hisp_lat"</span>, <span class="st">"amer_ind_alaskan"</span>, <span class="st">"asian"</span>, <span class="st">"black_afri_amer"</span>, <span class="st">"nat_hawaii_pacific_islander"</span>, <span class="st">"white"</span>, <span class="st">"multi_race"</span>)) </span>
+<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a>tbl2019_DegreeType_Sex <span class="ot">&lt;-</span> tbl2019_DegreeType_raw <span class="sc">|&gt;</span></span>
+<span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">c</span>(<span class="st">"field"</span>, <span class="st">"total"</span>, <span class="st">"female"</span>, <span class="st">"male"</span>))</span>
+<span id="cb22-20"><a href="#cb22-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-21"><a href="#cb22-21" aria-hidden="true" tabindex="-1"></a>tbl2019_DegreeType_Ethnicity <span class="ot">&lt;-</span> tbl2019_DegreeType_raw <span class="sc">|&gt;</span></span>
+<span id="cb22-22"><a href="#cb22-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">c</span>(<span class="st">"field"</span>, <span class="st">"total"</span>, <span class="st">"hisp_lat"</span>, <span class="st">"amer_ind_alaskan"</span>, <span class="st">"asian"</span>, <span class="st">"black_afri_amer"</span>, <span class="st">"nat_hawaii_pacific_islander"</span>, <span class="st">"white"</span>, <span class="st">"multi_race"</span>))</span>
+<span id="cb22-23"><a href="#cb22-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-24"><a href="#cb22-24" aria-hidden="true" tabindex="-1"></a>tbl2019_DegreeType_Sex <span class="ot">&lt;-</span> tbl2019_DegreeType_Sex <span class="sc">|&gt;</span>   </span>
+<span id="cb22-25"><a href="#cb22-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">DegreeLevel =</span> <span class="fu">case_when</span>(</span>
+<span id="cb22-26"><a href="#cb22-26" aria-hidden="true" tabindex="-1"></a>    <span class="fu">row_number</span>() <span class="sc">&lt;=</span> <span class="dv">8</span> <span class="sc">~</span> <span class="st">"bachelors"</span>,</span>
+<span id="cb22-27"><a href="#cb22-27" aria-hidden="true" tabindex="-1"></a>    <span class="fu">row_number</span>() <span class="sc">&gt;</span> <span class="dv">9</span> <span class="sc">&amp;</span> <span class="fu">row_number</span>() <span class="sc">&lt;=</span> <span class="dv">17</span> <span class="sc">~</span> <span class="st">"masters"</span>,</span>
+<span id="cb22-28"><a href="#cb22-28" aria-hidden="true" tabindex="-1"></a>    <span class="fu">row_number</span>() <span class="sc">&gt;</span> <span class="dv">18</span> <span class="sc">&amp;</span> <span class="fu">row_number</span>() <span class="sc">&lt;=</span> <span class="dv">26</span> <span class="sc">~</span> <span class="st">"doctorate"</span>,</span>
+<span id="cb22-29"><a href="#cb22-29" aria-hidden="true" tabindex="-1"></a>    <span class="fu">row_number</span>() <span class="sc">&gt;</span> <span class="dv">27</span> <span class="sc">&amp;</span> <span class="fu">row_number</span>() <span class="sc">&lt;=</span> <span class="dv">35</span> <span class="sc">~</span> <span class="st">"professional"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb22-30"><a href="#cb22-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="sc">-</span><span class="fu">c</span>(<span class="dv">9</span>,<span class="dv">18</span>,<span class="dv">27</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb22-31"><a href="#cb22-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">SE_type =</span> <span class="fu">case_when</span>(</span>
+<span id="cb22-32"><a href="#cb22-32" aria-hidden="true" tabindex="-1"></a>    field <span class="sc">==</span> <span class="st">"S&amp;E-related fields"</span> <span class="sc">~</span> <span class="st">"SE_related_fields"</span>,</span>
+<span id="cb22-33"><a href="#cb22-33" aria-hidden="true" tabindex="-1"></a>    field <span class="sc">==</span> <span class="st">"Non-S&amp;E fields"</span> <span class="sc">~</span> <span class="st">"non_SE_fields"</span>,</span>
+<span id="cb22-34"><a href="#cb22-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">.default =</span> <span class="st">"SE_field"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb22-35"><a href="#cb22-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">!</span>total) <span class="sc">|&gt;</span></span>
+<span id="cb22-36"><a href="#cb22-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="fu">c</span>(female, male), </span>
+<span id="cb22-37"><a href="#cb22-37" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"sex"</span>, </span>
+<span id="cb22-38"><a href="#cb22-38" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"count"</span>)</span>
+<span id="cb22-39"><a href="#cb22-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-40"><a href="#cb22-40" aria-hidden="true" tabindex="-1"></a>tbl2019_DegreeType_Ethnicity <span class="ot">&lt;-</span> tbl2019_DegreeType_Ethnicity <span class="sc">|&gt;</span></span>
+<span id="cb22-41"><a href="#cb22-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">DegreeLevel =</span> <span class="fu">case_when</span>(</span>
+<span id="cb22-42"><a href="#cb22-42" aria-hidden="true" tabindex="-1"></a>    <span class="fu">row_number</span>() <span class="sc">&lt;=</span> <span class="dv">8</span> <span class="sc">~</span> <span class="st">"bachelors"</span>,</span>
+<span id="cb22-43"><a href="#cb22-43" aria-hidden="true" tabindex="-1"></a>    <span class="fu">row_number</span>() <span class="sc">&gt;</span> <span class="dv">9</span> <span class="sc">&amp;</span> <span class="fu">row_number</span>() <span class="sc">&lt;=</span> <span class="dv">17</span> <span class="sc">~</span> <span class="st">"masters"</span>,</span>
+<span id="cb22-44"><a href="#cb22-44" aria-hidden="true" tabindex="-1"></a>    <span class="fu">row_number</span>() <span class="sc">&gt;</span> <span class="dv">18</span> <span class="sc">&amp;</span> <span class="fu">row_number</span>() <span class="sc">&lt;=</span> <span class="dv">26</span> <span class="sc">~</span> <span class="st">"doctorate"</span>,</span>
+<span id="cb22-45"><a href="#cb22-45" aria-hidden="true" tabindex="-1"></a>    <span class="fu">row_number</span>() <span class="sc">&gt;</span> <span class="dv">27</span> <span class="sc">&amp;</span> <span class="fu">row_number</span>() <span class="sc">&lt;=</span> <span class="dv">35</span> <span class="sc">~</span> <span class="st">"professional"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb22-46"><a href="#cb22-46" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="sc">-</span><span class="fu">c</span>(<span class="dv">9</span>,<span class="dv">18</span>,<span class="dv">27</span>))<span class="sc">|&gt;</span></span>
+<span id="cb22-47"><a href="#cb22-47" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">SE_type =</span> <span class="fu">case_when</span>(</span>
+<span id="cb22-48"><a href="#cb22-48" aria-hidden="true" tabindex="-1"></a>    field <span class="sc">==</span> <span class="st">"S&amp;E-related fields"</span> <span class="sc">~</span> <span class="st">"SE_related_fields"</span>,</span>
+<span id="cb22-49"><a href="#cb22-49" aria-hidden="true" tabindex="-1"></a>    field <span class="sc">==</span> <span class="st">"Non-S&amp;E fields"</span> <span class="sc">~</span> <span class="st">"non_SE_fields"</span>,</span>
+<span id="cb22-50"><a href="#cb22-50" aria-hidden="true" tabindex="-1"></a>    <span class="at">.default =</span> <span class="st">"SE_field"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb22-51"><a href="#cb22-51" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">!</span>total) <span class="sc">|&gt;</span></span>
+<span id="cb22-52"><a href="#cb22-52" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="sc">!</span><span class="fu">c</span>(field, DegreeLevel, SE_type), </span>
+<span id="cb22-53"><a href="#cb22-53" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"ethnicity_race"</span>, </span>
+<span id="cb22-54"><a href="#cb22-54" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"count"</span>)</span>
+<span id="cb22-55"><a href="#cb22-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-56"><a href="#cb22-56" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(tbl2019_DegreeType_Ethnicity, <span class="at">file =</span> <span class="st">"data-clean/tbl2019_DegreeType_Ethnicity.csv"</span>)</span>
+<span id="cb22-57"><a href="#cb22-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-58"><a href="#cb22-58" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(tbl2019_DegreeType_Sex, <span class="at">file =</span> <span class="st">"data-clean/tbl2019_DegreeType_Sex.csv"</span>)</span>
+<span id="cb22-59"><a href="#cb22-59" aria-hidden="true" tabindex="-1"></a><span class="co">#do I need 'total' variable?</span></span>
+<span id="cb22-60"><a href="#cb22-60" aria-hidden="true" tabindex="-1"></a><span class="co">#split table into race and then female/male</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>tbl2023_DegreeType_raw<span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"data-raw/nsf25322-tab002-001.xlsx"</span>,</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">skip =</span> <span class="dv">15</span>,</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">col_names =</span> <span class="fu">c</span>(<span class="st">"field"</span>, </span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>                                               <span class="st">"total"</span>, </span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>                                               <span class="st">"female"</span>, </span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>                                               <span class="st">"male"</span>,</span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>                                               <span class="st">"hisp_lat"</span>, </span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>                                               <span class="st">"amer_ind_alaskan"</span>, </span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>                                               <span class="st">"asian"</span>, </span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>                                               <span class="st">"black_afri_amer"</span>, </span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>                                               <span class="st">"nat_hawaii_pacific_islander"</span>, </span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>                                               <span class="st">"white"</span>, </span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>                                               <span class="st">"multi_race"</span>, </span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a>                                               <span class="st">"a"</span>, <span class="st">"b"</span>),</span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">na =</span> <span class="fu">c</span>(<span class="st">"D"</span>, <span class="st">"S"</span>, <span class="st">"*"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">c</span>(<span class="st">"field"</span>, <span class="st">"total"</span>, <span class="st">"female"</span>, <span class="st">"male"</span>, <span class="st">"hisp_lat"</span>, <span class="st">"amer_ind_alaskan"</span>, <span class="st">"asian"</span>, <span class="st">"black_afri_amer"</span>, <span class="st">"nat_hawaii_pacific_islander"</span>, <span class="st">"white"</span>, <span class="st">"multi_race"</span>)) </span>
+<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a>tbl2023_DegreeType_Sex <span class="ot">&lt;-</span> tbl2023_DegreeType_raw <span class="sc">|&gt;</span></span>
+<span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">c</span>(<span class="st">"field"</span>, <span class="st">"total"</span>, <span class="st">"female"</span>, <span class="st">"male"</span>))</span>
+<span id="cb23-20"><a href="#cb23-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-21"><a href="#cb23-21" aria-hidden="true" tabindex="-1"></a>tbl2023_DegreeType_Ethnicity <span class="ot">&lt;-</span> tbl2023_DegreeType_raw <span class="sc">|&gt;</span></span>
+<span id="cb23-22"><a href="#cb23-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">c</span>(<span class="st">"field"</span>, <span class="st">"total"</span>, <span class="st">"hisp_lat"</span>, <span class="st">"amer_ind_alaskan"</span>, <span class="st">"asian"</span>, <span class="st">"black_afri_amer"</span>, <span class="st">"nat_hawaii_pacific_islander"</span>, <span class="st">"white"</span>, <span class="st">"multi_race"</span>))</span>
+<span id="cb23-23"><a href="#cb23-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-24"><a href="#cb23-24" aria-hidden="true" tabindex="-1"></a>tbl2023_DegreeType_Sex <span class="ot">&lt;-</span> tbl2023_DegreeType_Sex <span class="sc">|&gt;</span>   </span>
+<span id="cb23-25"><a href="#cb23-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">DegreeLevel =</span> <span class="fu">case_when</span>(</span>
+<span id="cb23-26"><a href="#cb23-26" aria-hidden="true" tabindex="-1"></a>    <span class="fu">row_number</span>() <span class="sc">&lt;=</span> <span class="dv">8</span> <span class="sc">~</span> <span class="st">"bachelors"</span>,</span>
+<span id="cb23-27"><a href="#cb23-27" aria-hidden="true" tabindex="-1"></a>    <span class="fu">row_number</span>() <span class="sc">&gt;</span> <span class="dv">9</span> <span class="sc">&amp;</span> <span class="fu">row_number</span>() <span class="sc">&lt;=</span> <span class="dv">17</span> <span class="sc">~</span> <span class="st">"masters"</span>,</span>
+<span id="cb23-28"><a href="#cb23-28" aria-hidden="true" tabindex="-1"></a>    <span class="fu">row_number</span>() <span class="sc">&gt;</span> <span class="dv">18</span> <span class="sc">&amp;</span> <span class="fu">row_number</span>() <span class="sc">&lt;=</span> <span class="dv">26</span> <span class="sc">~</span> <span class="st">"doctorate"</span>,</span>
+<span id="cb23-29"><a href="#cb23-29" aria-hidden="true" tabindex="-1"></a>    <span class="fu">row_number</span>() <span class="sc">&gt;</span> <span class="dv">27</span> <span class="sc">&amp;</span> <span class="fu">row_number</span>() <span class="sc">&lt;=</span> <span class="dv">35</span> <span class="sc">~</span> <span class="st">"professional"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb23-30"><a href="#cb23-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="sc">-</span><span class="fu">c</span>(<span class="dv">9</span>,<span class="dv">18</span>,<span class="dv">27</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb23-31"><a href="#cb23-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">SE_type =</span> <span class="fu">case_when</span>(</span>
+<span id="cb23-32"><a href="#cb23-32" aria-hidden="true" tabindex="-1"></a>    field <span class="sc">==</span> <span class="st">"S&amp;E-related fields"</span> <span class="sc">~</span> <span class="st">"SE_related_fields"</span>,</span>
+<span id="cb23-33"><a href="#cb23-33" aria-hidden="true" tabindex="-1"></a>    field <span class="sc">==</span> <span class="st">"Non-S&amp;E fields"</span> <span class="sc">~</span> <span class="st">"non_SE_fields"</span>,</span>
+<span id="cb23-34"><a href="#cb23-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">.default =</span> <span class="st">"SE_field"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb23-35"><a href="#cb23-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">!</span>total) <span class="sc">|&gt;</span></span>
+<span id="cb23-36"><a href="#cb23-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="fu">c</span>(female, male), </span>
+<span id="cb23-37"><a href="#cb23-37" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"sex"</span>, </span>
+<span id="cb23-38"><a href="#cb23-38" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"count"</span>)</span>
+<span id="cb23-39"><a href="#cb23-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-40"><a href="#cb23-40" aria-hidden="true" tabindex="-1"></a>tbl2023_DegreeType_Ethnicity <span class="ot">&lt;-</span> tbl2023_DegreeType_Ethnicity <span class="sc">|&gt;</span></span>
+<span id="cb23-41"><a href="#cb23-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">DegreeLevel =</span> <span class="fu">case_when</span>(</span>
+<span id="cb23-42"><a href="#cb23-42" aria-hidden="true" tabindex="-1"></a>    <span class="fu">row_number</span>() <span class="sc">&lt;=</span> <span class="dv">8</span> <span class="sc">~</span> <span class="st">"bachelors"</span>,</span>
+<span id="cb23-43"><a href="#cb23-43" aria-hidden="true" tabindex="-1"></a>    <span class="fu">row_number</span>() <span class="sc">&gt;</span> <span class="dv">9</span> <span class="sc">&amp;</span> <span class="fu">row_number</span>() <span class="sc">&lt;=</span> <span class="dv">17</span> <span class="sc">~</span> <span class="st">"masters"</span>,</span>
+<span id="cb23-44"><a href="#cb23-44" aria-hidden="true" tabindex="-1"></a>    <span class="fu">row_number</span>() <span class="sc">&gt;</span> <span class="dv">18</span> <span class="sc">&amp;</span> <span class="fu">row_number</span>() <span class="sc">&lt;=</span> <span class="dv">26</span> <span class="sc">~</span> <span class="st">"doctorate"</span>,</span>
+<span id="cb23-45"><a href="#cb23-45" aria-hidden="true" tabindex="-1"></a>    <span class="fu">row_number</span>() <span class="sc">&gt;</span> <span class="dv">27</span> <span class="sc">&amp;</span> <span class="fu">row_number</span>() <span class="sc">&lt;=</span> <span class="dv">35</span> <span class="sc">~</span> <span class="st">"professional"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb23-46"><a href="#cb23-46" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="sc">-</span><span class="fu">c</span>(<span class="dv">9</span>,<span class="dv">18</span>,<span class="dv">27</span>))<span class="sc">|&gt;</span></span>
+<span id="cb23-47"><a href="#cb23-47" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">SE_type =</span> <span class="fu">case_when</span>(</span>
+<span id="cb23-48"><a href="#cb23-48" aria-hidden="true" tabindex="-1"></a>    field <span class="sc">==</span> <span class="st">"S&amp;E-related fields"</span> <span class="sc">~</span> <span class="st">"SE_related_fields"</span>,</span>
+<span id="cb23-49"><a href="#cb23-49" aria-hidden="true" tabindex="-1"></a>    field <span class="sc">==</span> <span class="st">"Non-S&amp;E fields"</span> <span class="sc">~</span> <span class="st">"non_SE_fields"</span>,</span>
+<span id="cb23-50"><a href="#cb23-50" aria-hidden="true" tabindex="-1"></a>    <span class="at">.default =</span> <span class="st">"SE_field"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb23-51"><a href="#cb23-51" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">!</span>total) <span class="sc">|&gt;</span></span>
+<span id="cb23-52"><a href="#cb23-52" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="sc">!</span><span class="fu">c</span>(field, DegreeLevel, SE_type), </span>
+<span id="cb23-53"><a href="#cb23-53" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"ethnicity_race"</span>, </span>
+<span id="cb23-54"><a href="#cb23-54" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"count"</span>)</span>
+<span id="cb23-55"><a href="#cb23-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-56"><a href="#cb23-56" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(tbl2023_DegreeType_Ethnicity, <span class="at">file =</span> <span class="st">"data-clean/tbl2023_DegreeType_Ethnicity.csv"</span>)</span>
+<span id="cb23-57"><a href="#cb23-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-58"><a href="#cb23-58" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(tbl2023_DegreeType_Sex, <span class="at">file =</span> <span class="st">"data-clean/tbl2023_DegreeType_Sex.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><strong>Do I need to clean variables using janitor? Next pieces are add total column for each gender, add ratio of count for each field/total gender count, add total col for each ethnicity (both gender), ratio of each field count/total ethnicity count</strong></p>
 </section>

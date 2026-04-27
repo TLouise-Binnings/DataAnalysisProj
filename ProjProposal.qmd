@@ -136,7 +136,7 @@ tbl2019_STEMfields <- tbl2019_STEMfields |>
 #total row does not reflect proper counts in this context any longer
 
 tbl2019_STEMfields <- tbl2019_STEMfields |>
-  select(-total)
+  select(!total)
 ```
 
 
@@ -196,7 +196,7 @@ tbl2019_STEMfields_clean <- read_excel("data-raw/nsf22310-tab001-005.xlsx",
   pivot_longer(!c(field, total), 
                names_to = "ethnicity_race", 
                values_to = "count") |>
-  select(-total) |>
+  select(!total) |>
   slice(-c(57:63)) |>
   mutate(sex = case_when(
     row_number() <= 56 ~ "female",
@@ -220,6 +220,7 @@ write_csv(tbl2019_STEMfields_clean, file = "data-clean/tbl2019_STEMfields_clean.
 #| label: single-code-chunk-clean-data-2023
 #single code chuck data
 #investigated 2023 data table to make sure that structure was identical to 2019 structure -- same code structure cleans data
+#"filter(field != "S&E fields")" is done to eliminate the total rows
 
 tbl2023_STEMfields_raw<- read_excel("data-raw/nsf25322-tab001-005.xlsx")
 
@@ -240,7 +241,7 @@ tbl2023_STEMfields_clean<- read_excel("data-raw/nsf25322-tab001-005.xlsx",
   pivot_longer(!c(field, total), 
                names_to = "ethnicity_race", 
                values_to = "count") |>
-  select(-total) |>
+  select(!total) |>
   slice(-c(57:63)) |>
   mutate(sex = case_when(
     row_number() <= 56 ~ "female",
@@ -291,11 +292,116 @@ tbl2019_DegreeType_raw<- read_excel("data-raw/nsf22310-tab002-001.xlsx",
                                                "multi_race", 
                                                "a", "b"),
                                     na = c("D", "S", "*")) |>
-  select(c("field", "female", "male", "hisp_lat", "amer_ind_alaskan", "asian", "black_afri_amer", "nat_hawaii_pacific_islander", "white", "multi_race")) 
-#|
-  #pivot_longer(!field, names_to = "ethnicity_race", values_to = "count")
+  select(c("field", "total", "female", "male", "hisp_lat", "amer_ind_alaskan", "asian", "black_afri_amer", "nat_hawaii_pacific_islander", "white", "multi_race")) 
+
+tbl2019_DegreeType_Sex <- tbl2019_DegreeType_raw |>
+  select(c("field", "total", "female", "male"))
+
+tbl2019_DegreeType_Ethnicity <- tbl2019_DegreeType_raw |>
+  select(c("field", "total", "hisp_lat", "amer_ind_alaskan", "asian", "black_afri_amer", "nat_hawaii_pacific_islander", "white", "multi_race"))
+
+tbl2019_DegreeType_Sex <- tbl2019_DegreeType_Sex |>   
+  mutate(DegreeLevel = case_when(
+    row_number() <= 8 ~ "bachelors",
+    row_number() > 9 & row_number() <= 17 ~ "masters",
+    row_number() > 18 & row_number() <= 26 ~ "doctorate",
+    row_number() > 27 & row_number() <= 35 ~ "professional")) |>
+  slice(-c(9,18,27)) |>
+  mutate(SE_type = case_when(
+    field == "S&E-related fields" ~ "SE_related_fields",
+    field == "Non-S&E fields" ~ "non_SE_fields",
+    .default = "SE_field")) |>
+  select(!total) |>
+  pivot_longer(c(female, male), 
+               names_to = "sex", 
+               values_to = "count")
+
+tbl2019_DegreeType_Ethnicity <- tbl2019_DegreeType_Ethnicity |>
+  mutate(DegreeLevel = case_when(
+    row_number() <= 8 ~ "bachelors",
+    row_number() > 9 & row_number() <= 17 ~ "masters",
+    row_number() > 18 & row_number() <= 26 ~ "doctorate",
+    row_number() > 27 & row_number() <= 35 ~ "professional")) |>
+  slice(-c(9,18,27))|>
+  mutate(SE_type = case_when(
+    field == "S&E-related fields" ~ "SE_related_fields",
+    field == "Non-S&E fields" ~ "non_SE_fields",
+    .default = "SE_field")) |>
+  select(!total) |>
+  pivot_longer(!c(field, DegreeLevel, SE_type), 
+               names_to = "ethnicity_race", 
+               values_to = "count")
+
+write_csv(tbl2019_DegreeType_Ethnicity, file = "data-clean/tbl2019_DegreeType_Ethnicity.csv")
+
+write_csv(tbl2019_DegreeType_Sex, file = "data-clean/tbl2019_DegreeType_Sex.csv")
 #do I need 'total' variable?
 #split table into race and then female/male
+```
+
+
+```{r}
+#| label: read-in-2023-degree-types-data
+
+tbl2023_DegreeType_raw<- read_excel("data-raw/nsf25322-tab002-001.xlsx",
+                                    skip = 15,
+                                    col_names = c("field", 
+                                               "total", 
+                                               "female", 
+                                               "male",
+                                               "hisp_lat", 
+                                               "amer_ind_alaskan", 
+                                               "asian", 
+                                               "black_afri_amer", 
+                                               "nat_hawaii_pacific_islander", 
+                                               "white", 
+                                               "multi_race", 
+                                               "a", "b"),
+                                    na = c("D", "S", "*")) |>
+  select(c("field", "total", "female", "male", "hisp_lat", "amer_ind_alaskan", "asian", "black_afri_amer", "nat_hawaii_pacific_islander", "white", "multi_race")) 
+
+tbl2023_DegreeType_Sex <- tbl2023_DegreeType_raw |>
+  select(c("field", "total", "female", "male"))
+
+tbl2023_DegreeType_Ethnicity <- tbl2023_DegreeType_raw |>
+  select(c("field", "total", "hisp_lat", "amer_ind_alaskan", "asian", "black_afri_amer", "nat_hawaii_pacific_islander", "white", "multi_race"))
+
+tbl2023_DegreeType_Sex <- tbl2023_DegreeType_Sex |>   
+  mutate(DegreeLevel = case_when(
+    row_number() <= 8 ~ "bachelors",
+    row_number() > 9 & row_number() <= 17 ~ "masters",
+    row_number() > 18 & row_number() <= 26 ~ "doctorate",
+    row_number() > 27 & row_number() <= 35 ~ "professional")) |>
+  slice(-c(9,18,27)) |>
+  mutate(SE_type = case_when(
+    field == "S&E-related fields" ~ "SE_related_fields",
+    field == "Non-S&E fields" ~ "non_SE_fields",
+    .default = "SE_field")) |>
+  select(!total) |>
+  pivot_longer(c(female, male), 
+               names_to = "sex", 
+               values_to = "count")
+
+tbl2023_DegreeType_Ethnicity <- tbl2023_DegreeType_Ethnicity |>
+  mutate(DegreeLevel = case_when(
+    row_number() <= 8 ~ "bachelors",
+    row_number() > 9 & row_number() <= 17 ~ "masters",
+    row_number() > 18 & row_number() <= 26 ~ "doctorate",
+    row_number() > 27 & row_number() <= 35 ~ "professional")) |>
+  slice(-c(9,18,27))|>
+  mutate(SE_type = case_when(
+    field == "S&E-related fields" ~ "SE_related_fields",
+    field == "Non-S&E fields" ~ "non_SE_fields",
+    .default = "SE_field")) |>
+  select(!total) |>
+  pivot_longer(!c(field, DegreeLevel, SE_type), 
+               names_to = "ethnicity_race", 
+               values_to = "count")
+
+write_csv(tbl2023_DegreeType_Ethnicity, file = "data-clean/tbl2023_DegreeType_Ethnicity.csv")
+
+write_csv(tbl2023_DegreeType_Sex, file = "data-clean/tbl2023_DegreeType_Sex.csv")
+
 ```
 
 
