@@ -69,7 +69,7 @@ Will need to address the D and S values and potentially recaterogize that data i
 There is data that is coded with D and S and * that I need to deal with and determine how to fill in those pieces -- it is related to the representation of Native Americans so I would like to include data showing how low their representation is but there is holes in that part of the dataset.
 
 **Do you need to filter your data? How?**
-I think I want to filter out the disability data and just focus on race and sex.
+I want to filter out the disability data and just focus on race and sex.
 
 **Do you need to create any new variables? What variables? How?**
 Could potentially create new ratio variables?  Or a year variable if I join the two tables.
@@ -169,6 +169,19 @@ tbl2019_STEMfields <- tbl2019_STEMfields |>
   filter(field != "S&E fields")
 ```
 
+```{r}
+#| label: consolidate-race-categories
+
+tbl2019_STEMfields <- tbl2019_STEMfields |>
+    mutate(ethnicity_race = case_when(
+        ethnicity_race == "hisp_lat" ~ "Hispanic or Latino",
+        ethnicity_race == "amer_ind_alaskan" ~ "Other", 
+        ethnicity_race == "asian" ~ "Asian",
+        ethnicity_race == "black_afri_amer" ~ "Black or African American",
+        ethnicity_race == "nat_hawaii_pacific_islander" ~ "Other",
+        ethnicity_race == "white" ~ "White", 
+        ethnicity_race == "multi_race" ~ "Other"))
+```
 
 
 ```{r}
@@ -202,6 +215,14 @@ tbl2019_STEMfields_clean <- read_excel("data-raw/nsf22310-tab001-005.xlsx",
     row_number() <= 56 ~ "female",
     row_number() > 56 & row_number() <= 112 ~ "male")) |>
   filter(field != "S&E fields") |>
+    mutate(ethnicity_race = case_when(
+        ethnicity_race == "hisp_lat" ~ "Hispanic or Latino",
+        ethnicity_race == "amer_ind_alaskan" ~ "Other", 
+        ethnicity_race == "asian" ~ "Asian",
+        ethnicity_race == "black_afri_amer" ~ "Black or African American",
+        ethnicity_race == "nat_hawaii_pacific_islander" ~ "Other",
+        ethnicity_race == "white" ~ "White", 
+        ethnicity_race == "multi_race" ~ "Other")) |>  
   mutate(SE_type = case_when(
     field == "S&E-related fields" ~ "SE_related_fields",
     field == "Non-S&E fields" ~ "non_SE_fields",
@@ -247,6 +268,14 @@ tbl2023_STEMfields_clean<- read_excel("data-raw/nsf25322-tab001-005.xlsx",
     row_number() <= 56 ~ "female",
     row_number() > 56 & row_number() <= 112 ~ "male")) |>
   filter(field != "S&E fields") |>
+  mutate(ethnicity_race = case_when(
+    ethnicity_race == "hisp_lat" ~ "Hispanic or Latino",
+    ethnicity_race == "amer_ind_alaskan" ~ "Other", 
+    ethnicity_race == "asian" ~ "Asian",
+    ethnicity_race == "black_afri_amer" ~ "Black or African American",
+    ethnicity_race == "nat_hawaii_pacific_islander" ~ "Other",
+    ethnicity_race == "white" ~ "White", 
+    ethnicity_race == "multi_race" ~ "Other")) |>  
   mutate(SE_type = case_when(
     field == "S&E-related fields" ~ "SE_related_fields",
     field == "Non-S&E fields" ~ "non_SE_fields",
@@ -330,7 +359,15 @@ tbl2019_DegreeType_Ethnicity <- tbl2019_DegreeType_Ethnicity |>
   select(!total) |>
   pivot_longer(!c(field, DegreeLevel, SE_type), 
                names_to = "ethnicity_race", 
-               values_to = "count")
+               values_to = "count") |>
+ mutate(ethnicity_race = case_when(
+    ethnicity_race == "hisp_lat" ~ "Hispanic or Latino",
+    ethnicity_race == "amer_ind_alaskan" ~ "Other", 
+    ethnicity_race == "asian" ~ "Asian",
+    ethnicity_race == "black_afri_amer" ~ "Black or African American",
+    ethnicity_race == "nat_hawaii_pacific_islander" ~ "Other",
+    ethnicity_race == "white" ~ "White", 
+    ethnicity_race == "multi_race" ~ "Other"))  
 
 write_csv(tbl2019_DegreeType_Ethnicity, file = "data-clean/tbl2019_DegreeType_Ethnicity.csv")
 
@@ -396,7 +433,15 @@ tbl2023_DegreeType_Ethnicity <- tbl2023_DegreeType_Ethnicity |>
   select(!total) |>
   pivot_longer(!c(field, DegreeLevel, SE_type), 
                names_to = "ethnicity_race", 
-               values_to = "count")
+               values_to = "count") |>
+  mutate(ethnicity_race = case_when(
+    ethnicity_race == "hisp_lat" ~ "Hispanic or Latino",
+    ethnicity_race == "amer_ind_alaskan" ~ "Other", 
+    ethnicity_race == "asian" ~ "Asian",
+    ethnicity_race == "black_afri_amer" ~ "Black or African American",
+    ethnicity_race == "nat_hawaii_pacific_islander" ~ "Other",
+    ethnicity_race == "white" ~ "White", 
+    ethnicity_race == "multi_race" ~ "Other"))   
 
 write_csv(tbl2023_DegreeType_Ethnicity, file = "data-clean/tbl2023_DegreeType_Ethnicity.csv")
 
@@ -404,5 +449,74 @@ write_csv(tbl2023_DegreeType_Sex, file = "data-clean/tbl2023_DegreeType_Sex.csv"
 
 ```
 
+```{r}
+#| label: add-ratio-to-STEMfieldsclean
+
+tbl2019_STEMfields_clean_prop <- tbl2019_STEMfields_clean |>
+  group_by(field) |>
+  mutate(prop_byfield = count/(sum(count, na.rm = TRUE))) |>
+  ungroup() |>
+  group_by(field, sex) |>
+  mutate(prop_bysex = count/(sum(count, na.rm = TRUE))) |>
+  ungroup() |>
+  mutate(prop = count/(sum(count, na.rm = TRUE)))
+
+```
+
+```{r}
+#| label: ggplot-bar-stacked
+
+tbl2019_STEMfields_clean_prop |> 
+  ggplot(aes(y=prop_byfield, x=fct_relevel(field, c("Biological, agricultural, and environmental life sciences", "Computer and mathematical sciences", "Engineering", "Physical and related scientists", "Social and related sciences", "S&E-related fields", "Non-S&E fields")), fill= fct_relevel(ethnicity_race, c("Other", "Black or African American", "Hispanic or Latino", "Asian", "White")))) +
+  geom_col(position = position_stack()) +
+  labs(y = "Field",
+       x = "Proportions",
+       title = "Representation in Science",
+       fill = "Ethnicity/Race") +
+  theme_minimal() +
+  scale_fill_viridis_d(end = 0.9) +
+  theme(
+    legend.position = "none",
+    axis.text = element_blank(),
+    axis.title = element_blank(),
+    panel.grid = element_blank(),
+    plot.margin = unit(rep(-1,4), "cm") 
+  ) +
+  coord_polar()
+
+```
+```{r}
+tbl2019_STEMfields_clean_prop |> 
+  ggplot(aes(y=prop, x=fct_relevel(field, c("Biological, agricultural, and environmental life sciences", "Computer and mathematical sciences", "Engineering", "Physical and related scientists", "Social and related sciences", "S&E-related fields", "Non-S&E fields")), fill= fct_relevel(ethnicity_race, c("Other", "Black or African American", "Hispanic or Latino", "Asian", "White")))) +
+  geom_col(position = position_stack()) +
+  labs(y = "Field",
+       x = "Proportions",
+       title = "Representation in Science",
+       fill = "Ethnicity/Race") +
+  theme_minimal() +
+  scale_fill_viridis_d(end = 0.9) +
+  theme(
+    axis.title = element_blank(),
+    plot.margin = unit(rep(-1,4), "cm") 
+  ) + 
+  coord_polar()
+```
+
+
+```{r}
+
+tbl2019_STEMfields_clean_prop |> 
+  ggplot(aes(x=prop_bysex, y=fct_relevel(field, c("Biological, agricultural, and environmental life sciences", "Computer and mathematical sciences", "Engineering", "Physical and related scientists", "Social and related sciences", "S&E-related fields", "Non-S&E fields")), fill= fct_relevel(ethnicity_race, c("Other", "Black or African American", "Hispanic or Latino", "Asian", "White")))) +
+  geom_col(position = position_stack()) +
+  labs(y = "Field",
+       x = "Proportions",
+       title = "Representation in Science",
+       fill = "Ethnicity/Race") +
+  theme_minimal() + 
+  facet_wrap(~sex) +
+  scale_fill_viridis_d(end = 0.9)
+  
+  
+```
 
 **Do I need to clean variables using janitor? Next pieces are add total column for each gender, add ratio of count for each field/total gender count, add total col for each ethnicity (both gender), ratio of each field count/total ethnicity count**

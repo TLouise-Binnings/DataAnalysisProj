@@ -1,99 +1,99 @@
 field,ethnicity_race,count,sex,SE_type
-"Biological, agricultural, and environmental life sciences",hisp_lat,31000,female,SE_field
-"Biological, agricultural, and environmental life sciences",amer_ind_alaskan,NA,female,SE_field
-"Biological, agricultural, and environmental life sciences",asian,81000,female,SE_field
-"Biological, agricultural, and environmental life sciences",black_afri_amer,19000,female,SE_field
-"Biological, agricultural, and environmental life sciences",nat_hawaii_pacific_islander,NA,female,SE_field
-"Biological, agricultural, and environmental life sciences",white,242000,female,SE_field
-"Biological, agricultural, and environmental life sciences",multi_race,9000,female,SE_field
-Computer and mathematical sciences,hisp_lat,35000,female,SE_field
-Computer and mathematical sciences,amer_ind_alaskan,NA,female,SE_field
-Computer and mathematical sciences,asian,184000,female,SE_field
-Computer and mathematical sciences,black_afri_amer,41000,female,SE_field
-Computer and mathematical sciences,nat_hawaii_pacific_islander,NA,female,SE_field
-Computer and mathematical sciences,white,189000,female,SE_field
-Computer and mathematical sciences,multi_race,12000,female,SE_field
-Physical and related sciences,hisp_lat,10000,female,SE_field
-Physical and related sciences,amer_ind_alaskan,NA,female,SE_field
-Physical and related sciences,asian,20000,female,SE_field
-Physical and related sciences,black_afri_amer,4000,female,SE_field
-Physical and related sciences,nat_hawaii_pacific_islander,NA,female,SE_field
-Physical and related sciences,white,96000,female,SE_field
-Physical and related sciences,multi_race,3000,female,SE_field
-Social and related sciences,hisp_lat,51000,female,SE_field
-Social and related sciences,amer_ind_alaskan,NA,female,SE_field
-Social and related sciences,asian,47000,female,SE_field
-Social and related sciences,black_afri_amer,27000,female,SE_field
-Social and related sciences,nat_hawaii_pacific_islander,NA,female,SE_field
-Social and related sciences,white,232000,female,SE_field
-Social and related sciences,multi_race,8000,female,SE_field
-Engineering,hisp_lat,40000,female,SE_field
-Engineering,amer_ind_alaskan,NA,female,SE_field
-Engineering,asian,116000,female,SE_field
-Engineering,black_afri_amer,12000,female,SE_field
-Engineering,nat_hawaii_pacific_islander,NA,female,SE_field
-Engineering,white,221000,female,SE_field
-Engineering,multi_race,12000,female,SE_field
-S&E-related fields,hisp_lat,10000,female,SE_related_fields
-S&E-related fields,amer_ind_alaskan,NA,female,SE_related_fields
-S&E-related fields,asian,37000,female,SE_related_fields
-S&E-related fields,black_afri_amer,19000,female,SE_related_fields
-S&E-related fields,nat_hawaii_pacific_islander,NA,female,SE_related_fields
-S&E-related fields,white,143000,female,SE_related_fields
-S&E-related fields,multi_race,NA,female,SE_related_fields
-Non-S&E fields,hisp_lat,74000,female,non_SE_fields
-Non-S&E fields,amer_ind_alaskan,NA,female,non_SE_fields
-Non-S&E fields,asian,92000,female,non_SE_fields
-Non-S&E fields,black_afri_amer,54000,female,non_SE_fields
-Non-S&E fields,nat_hawaii_pacific_islander,NA,female,non_SE_fields
-Non-S&E fields,white,389000,female,non_SE_fields
-Non-S&E fields,multi_race,12000,female,non_SE_fields
-"Biological, agricultural, and environmental life sciences",hisp_lat,42000,male,SE_field
-"Biological, agricultural, and environmental life sciences",amer_ind_alaskan,NA,male,SE_field
-"Biological, agricultural, and environmental life sciences",asian,58000,male,SE_field
-"Biological, agricultural, and environmental life sciences",black_afri_amer,11000,male,SE_field
-"Biological, agricultural, and environmental life sciences",nat_hawaii_pacific_islander,NA,male,SE_field
-"Biological, agricultural, and environmental life sciences",white,258000,male,SE_field
-"Biological, agricultural, and environmental life sciences",multi_race,8000,male,SE_field
-Computer and mathematical sciences,hisp_lat,152000,male,SE_field
-Computer and mathematical sciences,amer_ind_alaskan,NA,male,SE_field
-Computer and mathematical sciences,asian,405000,male,SE_field
-Computer and mathematical sciences,black_afri_amer,103000,male,SE_field
-Computer and mathematical sciences,nat_hawaii_pacific_islander,NA,male,SE_field
-Computer and mathematical sciences,white,926000,male,SE_field
-Computer and mathematical sciences,multi_race,54000,male,SE_field
-Physical and related sciences,hisp_lat,30000,male,SE_field
-Physical and related sciences,amer_ind_alaskan,NA,male,SE_field
-Physical and related sciences,asian,52000,male,SE_field
-Physical and related sciences,black_afri_amer,12000,male,SE_field
-Physical and related sciences,nat_hawaii_pacific_islander,NA,male,SE_field
-Physical and related sciences,white,240000,male,SE_field
-Physical and related sciences,multi_race,7000,male,SE_field
-Social and related sciences,hisp_lat,37000,male,SE_field
-Social and related sciences,amer_ind_alaskan,NA,male,SE_field
-Social and related sciences,asian,24000,male,SE_field
-Social and related sciences,black_afri_amer,21000,male,SE_field
-Social and related sciences,nat_hawaii_pacific_islander,NA,male,SE_field
-Social and related sciences,white,278000,male,SE_field
-Social and related sciences,multi_race,10000,male,SE_field
-Engineering,hisp_lat,184000,male,SE_field
-Engineering,amer_ind_alaskan,1000,male,SE_field
-Engineering,asian,469000,male,SE_field
-Engineering,black_afri_amer,79000,male,SE_field
-Engineering,nat_hawaii_pacific_islander,NA,male,SE_field
-Engineering,white,1255000,male,SE_field
-Engineering,multi_race,47000,male,SE_field
-S&E-related fields,hisp_lat,32000,male,SE_related_fields
-S&E-related fields,amer_ind_alaskan,NA,male,SE_related_fields
-S&E-related fields,asian,71000,male,SE_related_fields
-S&E-related fields,black_afri_amer,21000,male,SE_related_fields
-S&E-related fields,nat_hawaii_pacific_islander,NA,male,SE_related_fields
-S&E-related fields,white,179000,male,SE_related_fields
-S&E-related fields,multi_race,10000,male,SE_related_fields
-Non-S&E fields,hisp_lat,123000,male,non_SE_fields
-Non-S&E fields,amer_ind_alaskan,NA,male,non_SE_fields
-Non-S&E fields,asian,114000,male,non_SE_fields
-Non-S&E fields,black_afri_amer,65000,male,non_SE_fields
-Non-S&E fields,nat_hawaii_pacific_islander,NA,male,non_SE_fields
-Non-S&E fields,white,705000,male,non_SE_fields
-Non-S&E fields,multi_race,30000,male,non_SE_fields
+"Biological, agricultural, and environmental life sciences",Hispanic or Latino,31000,female,SE_field
+"Biological, agricultural, and environmental life sciences",Other,NA,female,SE_field
+"Biological, agricultural, and environmental life sciences",Asian,81000,female,SE_field
+"Biological, agricultural, and environmental life sciences",Black or African American,19000,female,SE_field
+"Biological, agricultural, and environmental life sciences",Other,NA,female,SE_field
+"Biological, agricultural, and environmental life sciences",White,242000,female,SE_field
+"Biological, agricultural, and environmental life sciences",Other,9000,female,SE_field
+Computer and mathematical sciences,Hispanic or Latino,35000,female,SE_field
+Computer and mathematical sciences,Other,NA,female,SE_field
+Computer and mathematical sciences,Asian,184000,female,SE_field
+Computer and mathematical sciences,Black or African American,41000,female,SE_field
+Computer and mathematical sciences,Other,NA,female,SE_field
+Computer and mathematical sciences,White,189000,female,SE_field
+Computer and mathematical sciences,Other,12000,female,SE_field
+Physical and related sciences,Hispanic or Latino,10000,female,SE_field
+Physical and related sciences,Other,NA,female,SE_field
+Physical and related sciences,Asian,20000,female,SE_field
+Physical and related sciences,Black or African American,4000,female,SE_field
+Physical and related sciences,Other,NA,female,SE_field
+Physical and related sciences,White,96000,female,SE_field
+Physical and related sciences,Other,3000,female,SE_field
+Social and related sciences,Hispanic or Latino,51000,female,SE_field
+Social and related sciences,Other,NA,female,SE_field
+Social and related sciences,Asian,47000,female,SE_field
+Social and related sciences,Black or African American,27000,female,SE_field
+Social and related sciences,Other,NA,female,SE_field
+Social and related sciences,White,232000,female,SE_field
+Social and related sciences,Other,8000,female,SE_field
+Engineering,Hispanic or Latino,40000,female,SE_field
+Engineering,Other,NA,female,SE_field
+Engineering,Asian,116000,female,SE_field
+Engineering,Black or African American,12000,female,SE_field
+Engineering,Other,NA,female,SE_field
+Engineering,White,221000,female,SE_field
+Engineering,Other,12000,female,SE_field
+S&E-related fields,Hispanic or Latino,10000,female,SE_related_fields
+S&E-related fields,Other,NA,female,SE_related_fields
+S&E-related fields,Asian,37000,female,SE_related_fields
+S&E-related fields,Black or African American,19000,female,SE_related_fields
+S&E-related fields,Other,NA,female,SE_related_fields
+S&E-related fields,White,143000,female,SE_related_fields
+S&E-related fields,Other,NA,female,SE_related_fields
+Non-S&E fields,Hispanic or Latino,74000,female,non_SE_fields
+Non-S&E fields,Other,NA,female,non_SE_fields
+Non-S&E fields,Asian,92000,female,non_SE_fields
+Non-S&E fields,Black or African American,54000,female,non_SE_fields
+Non-S&E fields,Other,NA,female,non_SE_fields
+Non-S&E fields,White,389000,female,non_SE_fields
+Non-S&E fields,Other,12000,female,non_SE_fields
+"Biological, agricultural, and environmental life sciences",Hispanic or Latino,42000,male,SE_field
+"Biological, agricultural, and environmental life sciences",Other,NA,male,SE_field
+"Biological, agricultural, and environmental life sciences",Asian,58000,male,SE_field
+"Biological, agricultural, and environmental life sciences",Black or African American,11000,male,SE_field
+"Biological, agricultural, and environmental life sciences",Other,NA,male,SE_field
+"Biological, agricultural, and environmental life sciences",White,258000,male,SE_field
+"Biological, agricultural, and environmental life sciences",Other,8000,male,SE_field
+Computer and mathematical sciences,Hispanic or Latino,152000,male,SE_field
+Computer and mathematical sciences,Other,NA,male,SE_field
+Computer and mathematical sciences,Asian,405000,male,SE_field
+Computer and mathematical sciences,Black or African American,103000,male,SE_field
+Computer and mathematical sciences,Other,NA,male,SE_field
+Computer and mathematical sciences,White,926000,male,SE_field
+Computer and mathematical sciences,Other,54000,male,SE_field
+Physical and related sciences,Hispanic or Latino,30000,male,SE_field
+Physical and related sciences,Other,NA,male,SE_field
+Physical and related sciences,Asian,52000,male,SE_field
+Physical and related sciences,Black or African American,12000,male,SE_field
+Physical and related sciences,Other,NA,male,SE_field
+Physical and related sciences,White,240000,male,SE_field
+Physical and related sciences,Other,7000,male,SE_field
+Social and related sciences,Hispanic or Latino,37000,male,SE_field
+Social and related sciences,Other,NA,male,SE_field
+Social and related sciences,Asian,24000,male,SE_field
+Social and related sciences,Black or African American,21000,male,SE_field
+Social and related sciences,Other,NA,male,SE_field
+Social and related sciences,White,278000,male,SE_field
+Social and related sciences,Other,10000,male,SE_field
+Engineering,Hispanic or Latino,184000,male,SE_field
+Engineering,Other,1000,male,SE_field
+Engineering,Asian,469000,male,SE_field
+Engineering,Black or African American,79000,male,SE_field
+Engineering,Other,NA,male,SE_field
+Engineering,White,1255000,male,SE_field
+Engineering,Other,47000,male,SE_field
+S&E-related fields,Hispanic or Latino,32000,male,SE_related_fields
+S&E-related fields,Other,NA,male,SE_related_fields
+S&E-related fields,Asian,71000,male,SE_related_fields
+S&E-related fields,Black or African American,21000,male,SE_related_fields
+S&E-related fields,Other,NA,male,SE_related_fields
+S&E-related fields,White,179000,male,SE_related_fields
+S&E-related fields,Other,10000,male,SE_related_fields
+Non-S&E fields,Hispanic or Latino,123000,male,non_SE_fields
+Non-S&E fields,Other,NA,male,non_SE_fields
+Non-S&E fields,Asian,114000,male,non_SE_fields
+Non-S&E fields,Black or African American,65000,male,non_SE_fields
+Non-S&E fields,Other,NA,male,non_SE_fields
+Non-S&E fields,White,705000,male,non_SE_fields
+Non-S&E fields,Other,30000,male,non_SE_fields
