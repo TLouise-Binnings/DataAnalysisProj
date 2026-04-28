@@ -1,219 +1,50 @@
 ---
-title: "Project Proposal"
+title: "Spring 2026 Project"
 author: Theresa Louise Binnings
 format: html
 execute: 
-  echo: true
-  embed-resources: true
-  code-tools: true
-  
+  echo: false
+  warning: false
+  message: false
+embed-resources: true
 ---
 
-## Data Description
-
-**Identify your data source:** 
-
-Data source is NSF (U.S. National Science Foundation).  Specifically these tables are drawn from the National Center for Science and Engineering Statistics
-
-**Describe your data, including variables and data types.**
-
-The data is the number of male/female people of different race categories that are employed in major Science and Engineering fields along with disability status and type of disability.
-
-All variables are: Science/Engineering Fields, Sex, Race, Number (count) of employees in each category.
-
-The quantities of each type is an integer value, Sex is a string/character, Race is a String and STEM field type is a string.
-
-**Identify the research questions you want to answer.**
-
-How do the number of men and women in major STEM fields (BIO, COMPUTER SCI, PHYSICAL, SOCIAL, ENGINEER, etc.) compare to one another?
-
-How do the different race categories compare to one another?
-
-Have there been any shifts in those proportions between 2019 and 2023?
-
-## Data Visualization
-
-**What do you want your final visualizations to look like?**
-
-I think it might want to try to figure out how to do a circular bar chart to show the different quantities of individuals of each race across the major STEM fields...
-
-Or a bar chart would work too -- but the grouping with the various main STEM majors to see how race varies across the different areas would be awesome.
-
-I think a normal bar chart of men/women for each major STEM field would work
-
-It could be interesting to try to do a circular pie chart with female vs male and then all of the different race or major type...
-
-**What do you want to highlight on your final visualizations in order to answer your research questions?** 
-
-I want to highlight the difference in Men/Women and White People/Non white people....
-
-Looking at Men/Women ratios from 2019 to 2023 would also be something I want to investigate and highlight if there is a distinct difference...
-
-**How do you plan to do that?**
-
-I think it would be awesome to try to do a circular bar chart like I described above of the different count values of the race categories across the different majors (majors could be delineated with differing colors)
-
-**What is missing from your data or would need to change in your data to create these visualizations?**
-
-The missing piece in my data is data on Native Americans and the count of their representation in certain subgroups...
-
-## Data Cleaning
-
-The answer to at least three of these questions should be “YES” for the data to meet the necessary standards to demonstrate your cleaning. Your data source should not be an already perfectly prepared data set.
-
-**Do you need to reformat any variables into different types (e.g. factors, time, dates, strings)? Or remove information from variable values?**
-
-Will need to address the D and S values and potentially recaterogize that data in that area as integer if those spots cause the data to be read in as a string.
-
-**Do you need to deal with any missing data, especially missing data coded other than NA?**
-There is data that is coded with D and S and * that I need to deal with and determine how to fill in those pieces -- it is related to the representation of Native Americans so I would like to include data showing how low their representation is but there is holes in that part of the dataset.
-
-**Do you need to filter your data? How?**
-I want to filter out the disability data and just focus on race and sex.
-
-**Do you need to create any new variables? What variables? How?**
-Could potentially create new ratio variables?  Or a year variable if I join the two tables.
-
-**Do you need to add new data (join) to your data? What data? How?** YES
-Could potentially join the 2 data tables and create a year variable?  How would I do this?  I could do a full join potentially based around each of the major STEM category types?
-
-**Do you need pivot your data in any way? Why? How?** YES
-I will need to pivot my data.  The race is on the top for column names but I need to put it into a column.  The female/Male data is shown through subheadings from the first row and so that needs to be pivoted to be in a column -- does that work to be pivoted?  Or is there another way to approach the subheading of the first column/row...?
-
-*Do you need to summarize any of the variables? Which ones? How?*
-
-*What other aspects of your data need to be “fixed” in order to make your data visualizations?*
-
-*Most will answer yes to the following for making your programming more efficient using select(), but you should have three other yeses above.*
-
-**Are there any variables you can exclude from your data?**
-
-I think I can excluded the variables related to disabilities because I want to focus on race/sex.
 
 ```{r}
 #| label: load-packages
-
-#search - 'how to read in excel data with tidyverse' -- must also load readxl which is tidyverse package
+#| include: false
 
 library(tidyverse)
 library(readxl)
 
 ```
 
-```{r}
-#| label: read-data
+## Data Description
 
-tbl2019_stemfields_initial_raw <- read_excel("data-raw/nsf22310-tab001-005.xlsx")
-                                         
-tbl2019_stemfields <- read_excel("data-raw/nsf22310-tab001-005.xlsx", 
+*Here is a description of my data and a link to the source embded here with references.*
+
+## Data Cleaning
+
+*Here I describe in plain speak what I did to clean the data. Do not show code or use technical terms. I want to be able to read this and understand what I did.*
+
+
+
+```{r}
+#| label: read-in-and-clean-data
+#single code chuck data
+
+tbl2019_stemfields_clean <- read_excel("data-raw/nsf22310-tab001-005.xlsx", 
                                  skip = 15, 
                                  col_names = c("field", 
                                                "total", 
                                                "hisp_lat", 
                                                "amer_ind_alaskan", 
-                                               "asian", "black_afri_amer", 
-                                               "nat_hawaii_pacific_islander", "
-                                               white", 
+                                               "asian", 
+                                               "black_afri_amer", 
+                                               "nat_hawaii_pacific_islander", 
+                                               "white", 
                                                "multi_race", 
                                                "a", "b", "c", "d", "e", "f", "g"),
-                                 na = c("D", "N", "*", "S"))
-
-```
-
-
-```{r}
-#| label: drop-disability-data
-#| include: false
-
-tbl2019_stemfields <- tbl2019_stemfields |>
-  select("field", "total", "hisp_lat", "amer_ind_alaskan", "asian", "black_afri_amer", "nat_hawaii_pacific_islander", "white", "multi_race")
-
-```
-
-```{r}
-#| label: pivot-longer
-#| include: false
-#race as label
-
-tbl2019_stemfields <- tbl2019_stemfields |>
-  pivot_longer(!c(field, total), 
-               names_to = "ethnicity_race", 
-               values_to = "count")
-```
-
-```{r}
-#| label: drop-total-row
-#total row does not reflect proper counts in this context any longer
-
-tbl2019_stemfields <- tbl2019_stemfields |>
-  select(!total)
-```
-
-
-```{r}
-#| label: drop-male-female-rows
-#google 'how to drop rows in R tidyverse' --> use slice
-
-tbl2019_stemfields <- tbl2019_stemfields |>
-  slice(-c(57:63))
-
-```
-
-```{r}
-#| label: add-sex-col
-# googled: 'can I use case_when for rows?' -- 'row_number()' search ?row_number() in R
-#stuck -- why does "row_number(1:56) ~ "female", row_number(57:112) ~ "male")" not work?
-
-tbl2019_stemfields <- tbl2019_stemfields |>
-  mutate(sex = case_when(
-    row_number() <= 56 ~ "female",
-    row_number() > 56 & row_number() <= 112 ~ "male"))
-
-```
-
-
-```{r}
-#| label: remove-SE_field-general-rows
-
-tbl2019_stemfields <- tbl2019_stemfields |>
-  filter(field != "S&E fields")
-```
-
-```{r}
-#| label: consolidate-race-categories
-
-tbl2019_stemfields <- tbl2019_stemfields |>
-    mutate(ethnicity_race = case_when(
-        ethnicity_race == "hisp_lat" ~ "Hispanic or Latino",
-        ethnicity_race == "amer_ind_alaskan" ~ "Other", 
-        ethnicity_race == "asian" ~ "Asian",
-        ethnicity_race == "black_afri_amer" ~ "Black or African American",
-        ethnicity_race == "nat_hawaii_pacific_islander" ~ "Other",
-        ethnicity_race == "white" ~ "White", 
-        ethnicity_race == "multi_race" ~ "Other"))
-```
-
-
-```{r}
-#| label: add-SE_field-col
-#reference in class assignment PA_6
-	
-tbl2019_stemfields <- tbl2019_stemfields |>
-  mutate(SE_type = case_when(
-    field == "S&E-related fields" ~ "SE_related_fields",
-    field == "Non-S&E fields" ~ "non_SE_fields",
-    .default = "SE_field"))
-
-```
-
-
-```{r}
-#| label: single-code-chunk-clean-data-2019
-#single code chuck data
-
-tbl2019_stemfields_clean <- read_excel("data-raw/nsf22310-tab001-005.xlsx", 
-                                 skip = 15, 
-                                 col_names = c("field", "total", "hisp_lat", "amer_ind_alaskan", "asian", "black_afri_amer", "nat_hawaii_pacific_islander", "white", "multi_race", "a", "b", "c", "d", "e", "f", "g"),
                                  na = c("D", "N", "*", "S")) |>
   select("field", "total", "hisp_lat", "amer_ind_alaskan", "asian", "black_afri_amer", "nat_hawaii_pacific_islander", "white", "multi_race") |>
   pivot_longer(!c(field, total), 
@@ -249,13 +80,9 @@ write_csv(tbl2019_stemfields_clean, file = "data-clean/tbl2019_stemfields_clean.
 
 ```{r}
 #| label: single-code-chunk-clean-data-2023
-#single code chuck data
-#investigated 2023 data table to make sure that structure was identical to 2019 structure -- same code structure cleans data
-#"filter(field != "S&E fields")" is done to eliminate the total rows
 
-tbl2023_stemfields_raw<- read_excel("data-raw/nsf25322-tab001-005.xlsx")
 
-tbl2023_stemfields_clean<- read_excel("data-raw/nsf25322-tab001-005.xlsx", 
+tbl2023_stemfields_clean <- read_excel("data-raw/nsf25322-tab001-005.xlsx", 
                                  skip = 15, 
                                  col_names = c("field", 
                                                "total", 
@@ -292,6 +119,8 @@ tbl2023_stemfields_clean<- read_excel("data-raw/nsf25322-tab001-005.xlsx",
     .default = "SE_field"))
 
 ```
+
+
 ```{r}
 #| label: write-clean-2023-data-to-folder
 
@@ -316,7 +145,7 @@ ggplot(tbl2019_stemfields_clean, aes(x=field, y=count, fill=field)) +
 ```{r}
 #| label: read-in-2019-degree-types-data
 
-tbl2019_DegreeType_raw<- read_excel("data-raw/nsf22310-tab002-001.xlsx",
+tbl2019_degreetype_raw<- read_excel("data-raw/nsf22310-tab002-001.xlsx",
                                     skip = 15,
                                     col_names = c("field", 
                                                "total", 
@@ -333,13 +162,24 @@ tbl2019_DegreeType_raw<- read_excel("data-raw/nsf22310-tab002-001.xlsx",
                                     na = c("D", "S", "*")) |>
   select(c("field", "total", "female", "male", "hisp_lat", "amer_ind_alaskan", "asian", "black_afri_amer", "nat_hawaii_pacific_islander", "white", "multi_race")) 
 
-tbl2019_DegreeType_sex <- tbl2019_DegreeType_raw |>
+```
+
+```{r}
+#| label: split-degreetypes-data-sex-race
+
+tbl2019_degreetype_sex <- tbl2019_degreetype_raw |>
   select(c("field", "total", "female", "male"))
 
-tbl2019_DegreeType_ethnicity <- tbl2019_DegreeType_raw |>
+tbl2019_degreetype_ethnicity <- tbl2019_degreetype_raw |>
   select(c("field", "total", "hisp_lat", "amer_ind_alaskan", "asian", "black_afri_amer", "nat_hawaii_pacific_islander", "white", "multi_race"))
 
-tbl2019_DegreeType_sex <- tbl2019_DegreeType_sex |>   
+```
+
+
+```{r}
+#| label: clean-sex-2019-degree-types-data
+
+tbl2019_degreetype_sex <- tbl2019_degreetype_sex |>   
   mutate(DegreeLevel = case_when(
     row_number() <= 8 ~ "bachelors",
     row_number() > 9 & row_number() <= 17 ~ "masters",
@@ -355,7 +195,12 @@ tbl2019_DegreeType_sex <- tbl2019_DegreeType_sex |>
                names_to = "sex", 
                values_to = "count")
 
-tbl2019_DegreeType_ethnicity <- tbl2019_DegreeType_ethnicity |>
+```
+
+```{r}
+#| label: clean-ethnicity-2019-degree-types-data
+
+tbl2019_degreetype_ethnicity <- tbl2019_degreetype_ethnicity |>
   mutate(DegreeLevel = case_when(
     row_number() <= 8 ~ "bachelors",
     row_number() > 9 & row_number() <= 17 ~ "masters",
@@ -379,18 +224,21 @@ tbl2019_DegreeType_ethnicity <- tbl2019_DegreeType_ethnicity |>
     ethnicity_race == "white" ~ "White", 
     ethnicity_race == "multi_race" ~ "Other"))  
 
-write_csv(tbl2019_DegreeType_ethnicity, file = "data-clean/tbl2019_DegreeType_ethnicity.csv")
+```
 
-write_csv(tbl2019_DegreeType_sex, file = "data-clean/tbl2019_DegreeType_sex.csv")
-#do I need 'total' variable?
-#split table into race and then female/male
+```{r}
+#| label: write-clean-2019-degree-types-data
+
+write_csv(tbl2019_degreetype_ethnicity, file = "data-clean/tbl2019_degreetype_ethnicity.csv")
+
+write_csv(tbl2019_degreetype_sex, file = "data-clean/tbl2019_degreetype_sex.csv")
 ```
 
 
 ```{r}
 #| label: read-in-2023-degree-types-data
 
-tbl2023_DegreeType_raw<- read_excel("data-raw/nsf25322-tab002-001.xlsx",
+tbl2023_degreetype_raw<- read_excel("data-raw/nsf25322-tab002-001.xlsx",
                                     skip = 15,
                                     col_names = c("field", 
                                                "total", 
@@ -405,15 +253,15 @@ tbl2023_DegreeType_raw<- read_excel("data-raw/nsf25322-tab002-001.xlsx",
                                                "multi_race", 
                                                "a", "b"),
                                     na = c("D", "S", "*")) |>
-  select("field", "total", "female", "male", "hisp_lat", "amer_ind_alaskan", "asian", "black_afri_amer", "nat_hawaii_pacific_islander", "white", "multi_race") 
+  select(c("field", "total", "female", "male", "hisp_lat", "amer_ind_alaskan", "asian", "black_afri_amer", "nat_hawaii_pacific_islander", "white", "multi_race")) 
 
-tbl2023_DegreeType_sex <- tbl2023_DegreeType_raw |>
+tbl2023_degreetype_sex <- tbl2023_degreetype_raw |>
   select(c("field", "total", "female", "male"))
 
-tbl2023_DegreeType_ethnicity <- tbl2023_DegreeType_raw |>
+tbl2023_degreetype_ethnicity <- tbl2023_degreetype_raw |>
   select(c("field", "total", "hisp_lat", "amer_ind_alaskan", "asian", "black_afri_amer", "nat_hawaii_pacific_islander", "white", "multi_race"))
 
-tbl2023_DegreeType_sex <- tbl2023_DegreeType_sex |>   
+tbl2023_degreetype_sex <- tbl2023_degreetype_sex |>   
   mutate(DegreeLevel = case_when(
     row_number() <= 8 ~ "bachelors",
     row_number() > 9 & row_number() <= 17 ~ "masters",
@@ -429,7 +277,7 @@ tbl2023_DegreeType_sex <- tbl2023_DegreeType_sex |>
                names_to = "sex", 
                values_to = "count")
 
-tbl2023_DegreeType_ethnicity <- tbl2023_DegreeType_ethnicity |>
+tbl2023_degreetype_ethnicity <- tbl2023_degreetype_ethnicity |>
   mutate(DegreeLevel = case_when(
     row_number() <= 8 ~ "bachelors",
     row_number() > 9 & row_number() <= 17 ~ "masters",
@@ -453,9 +301,9 @@ tbl2023_DegreeType_ethnicity <- tbl2023_DegreeType_ethnicity |>
     ethnicity_race == "white" ~ "White", 
     ethnicity_race == "multi_race" ~ "Other"))   
 
-write_csv(tbl2023_DegreeType_ethnicity, file = "data-clean/tbl2023_DegreeType_ethnicity.csv")
+write_csv(tbl2023_degreetype_ethnicity, file = "data-clean/tbl2023_degreetype_ethnicity.csv")
 
-write_csv(tbl2023_DegreeType_sex, file = "data-clean/tbl2023_DegreeType_sex.csv")
+write_csv(tbl2023_degreetype_sex, file = "data-clean/tbl2023_degreetype_sex.csv")
 
 ```
 
@@ -502,9 +350,27 @@ tbl2019_stemfields_clean_prop |>
   labs(y = "Field",
        x = "Proportions",
        title = "Representation in Science",
-       fill = "Ethnicity/Race") +
+       fill = "ethnicity/Race") +
   theme_minimal() +
   scale_fill_viridis_d(end = 0.9) +
+  theme(
+    axis.title = element_blank(),
+    plot.margin = unit(rep(-1,4), "cm") 
+  ) + 
+  coord_polar()
+```
+
+```{r}
+tbl2019_stemfields_clean_prop |> 
+  ggplot(aes(y=prop, x=fct_relevel(field, c("Biological, agricultural, and environmental life sciences", "Computer and mathematical sciences", "Engineering", "Physical and related scientists", "Social and related sciences", "S&E-related fields", "Non-S&E fields")), 
+             fill= sex)) +
+  geom_col(position = position_stack()) +
+  labs(y = "Field",
+       x = "Proportions",
+       title = "Representation in Science",
+       fill = "ethnicity/Race") +
+  theme_minimal() +
+  scale_fill_viridis_d(end = 0.3) +
   theme(
     axis.title = element_blank(),
     plot.margin = unit(rep(-1,4), "cm") 
@@ -516,7 +382,7 @@ tbl2019_stemfields_clean_prop |>
 ```{r}
 
 tbl2019_stemfields_clean_prop |> 
-  ggplot(aes(x = prop_bysex, y=fct_relevel(field, c("Biological, agricultural, and environmental life sciences",
+  ggplot(aes(x=prop_bysex, y=fct_relevel(field, c("Biological, agricultural, and environmental life sciences",
                                                   "Computer and mathematical sciences", 
                                                   "Engineering", 
                                                   "Physical and related scientists", 
@@ -525,12 +391,14 @@ tbl2019_stemfields_clean_prop |>
                                                   "Non-S&E fields")), 
              fill= fct_relevel(ethnicity_race, c("Other", 
                                                  "Black or African American", 
-                                                 "Hispanic or Latino", "Asian", "White")))) +
+                                                 "Hispanic or Latino", 
+                                                 "Asian", 
+                                                 "White")))) +
   geom_col(position = position_stack()) +
   labs(y = "Field",
        x = "Proportions",
        title = "Representation in Science",
-       fill = "Ethnicity/Race") +
+       fill = "ethnicity/Race") +
   theme_minimal() + 
   facet_wrap(~sex) +
   scale_fill_viridis_d(end = 0.9)
@@ -538,4 +406,3 @@ tbl2019_stemfields_clean_prop |>
   
 ```
 
-**Do I need to clean variables using janitor? Next pieces are add total column for each gender, add ratio of count for each field/total gender count, add total col for each ethnicity (both gender), ratio of each field count/total ethnicity count**
