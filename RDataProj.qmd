@@ -16,6 +16,7 @@ embed-resources: true
 
 library(tidyverse)
 library(readxl)
+library(paletteer)
 
 ```
 
@@ -345,24 +346,44 @@ tbl2019_stemfields_clean_prop |>
 ```
 ```{r}
 tbl2019_stemfields_clean_prop |> 
-  ggplot(aes(y=prop, x=fct_relevel(field, c("Biological, agricultural, and environmental life sciences", "Computer and mathematical sciences", "Engineering", "Physical and related scientists", "Social and related sciences", "S&E-related fields", "Non-S&E fields")), fill= fct_relevel(ethnicity_race, c("Other", "Black or African American", "Hispanic or Latino", "Asian", "White")))) +
+  ggplot(aes(y = prop, 
+             x = fct_relevel(field, c("Biological, agricultural, and environmental life sciences", 
+                                      "Computer and mathematical sciences", 
+                                      "Engineering", "Physical and related sciences", 
+                                      "Social and related sciences", 
+                                      "S&E-related fields", 
+                                      "Non-S&E fields")), 
+             fill= fct_relevel(ethnicity_race, c("White", 
+                                                 "Asian",
+                                                 "Hispanic or Latino",
+                                                 "Black or African American", 
+                                                 "Other")))) +
   geom_col(position = position_stack()) +
   labs(y = "Field",
        x = "Proportions",
        title = "Representation in Science",
        fill = "ethnicity/Race") +
   theme_minimal() +
-  scale_fill_viridis_d(end = 0.9) +
+  scale_fill_viridis_d(direction = -1, end = 0.97) +
   theme(
     axis.title = element_blank(),
     plot.margin = unit(rep(-1,4), "cm") 
   ) + 
-  coord_polar()
+  coord_polar() +
+  ylim(-0.02, 0.3) 
+
 ```
 
 ```{r}
 tbl2019_stemfields_clean_prop |> 
-  ggplot(aes(y=prop, x=fct_relevel(field, c("Biological, agricultural, and environmental life sciences", "Computer and mathematical sciences", "Engineering", "Physical and related scientists", "Social and related sciences", "S&E-related fields", "Non-S&E fields")), 
+  ggplot(aes(y=prop, 
+             x=fct_relevel(field, c("Biological, agricultural, and environmental life sciences", 
+                                            "Computer and mathematical sciences", 
+                                            "Engineering", 
+                                            "Physical and related scientists", 
+                                            "Social and related sciences", 
+                                            "S&E-related fields", 
+                                            "Non-S&E fields")), 
              fill= sex)) +
   geom_col(position = position_stack()) +
   labs(y = "Field",
@@ -382,10 +403,13 @@ tbl2019_stemfields_clean_prop |>
 ```{r}
 
 tbl2019_stemfields_clean_prop |> 
-  ggplot(aes(x=prop_bysex, y=fct_relevel(field, c("Biological, agricultural, and environmental life sciences",
+  distinct(field)
+
+tbl2019_stemfields_clean_prop |> 
+  ggplot(aes(x = prop_bysex, y = fct_relevel(field, c("Biological, agricultural, and environmental life sciences",
                                                   "Computer and mathematical sciences", 
                                                   "Engineering", 
-                                                  "Physical and related scientists", 
+                                                  "Physical and related sciences", 
                                                   "Social and related sciences", 
                                                   "S&E-related fields", 
                                                   "Non-S&E fields")), 
@@ -401,6 +425,7 @@ tbl2019_stemfields_clean_prop |>
        fill = "ethnicity/Race") +
   theme_minimal() + 
   facet_wrap(~sex) +
+  theme(axis.ticks.x = element_blank()) +
   scale_fill_viridis_d(end = 0.9)
   
   
