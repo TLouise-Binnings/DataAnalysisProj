@@ -22,7 +22,7 @@ library(paletteer)
 
 ## Data Description
 
-*Here is a description of my data and a link to the source embded here with references.*
+*Here is a description of my data and a link to the source embeded here with references.*
 
 ## Data Cleaning
 
