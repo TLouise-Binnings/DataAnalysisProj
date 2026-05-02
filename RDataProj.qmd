@@ -286,21 +286,6 @@ tbl2023_stemfields_clean_prop |>
 ggsave("circlplot_2023malefemale.png", width = 19, height = 8, units = "in")
 ```
 
-
-
-
-```{r}
-tbl2019_stemfields_clean_prop |> 
-  ggplot(aes(x = sex, y = count/1000, fill = fct_relevel(ethnicity_race, c("White", 
-                                                 "Asian",
-                                                 "Hispanic or Latino",
-                                                 "Black or African American", 
-                                                 "Other")))) +
-  geom_col() +
-  facet_wrap(~ field, labeller = label_wrap_gen(width = 20), ncol = 4, scales = "free") +
-  scale_fill_viridis_d(direction = -1, end = 0.97) +
-  theme_minimal()
-```
 ```{r}
 
 
@@ -333,6 +318,10 @@ tbl2019_stemfields_clean_prop |>
     y = "",
     fill = "")
 
+ggsave("bar_2019malefemale.png", width = 14, height = 8, units = "in")
+```
+
+```{r}
 
 tbl2023_stemfields_clean_prop |> 
   filter(!is.na(count)) |>
@@ -360,6 +349,46 @@ tbl2023_stemfields_clean_prop |>
     x = "",
     y = "",
     fill = "")
+
+ggsave("bar_2023malefemale.png", width = 14, height = 8, units = "in")
+```
+```{r}
+
+tbl2019_2023_stemfields_clean_prop <- bind_rows(tbl2019_stemfields_clean_prop, tbl2023_stemfields_clean_prop)
+
+```
+
+
+```{r, fig.width = 16, fig.height = 14}
+
+
+tbl2019_2023_stemfields_clean_prop |> 
+  filter(!is.na(count)) |>
+  ggplot(aes(x = fct_relevel(sex, c("Male", "Female")), y = prop, fill = fct_relevel(ethnicity_race, c("White", 
+                                                 "Asian",
+                                                 "Hispanic or Latino",
+                                                 "Black or African American", 
+                                                 "Other")))) +
+  geom_col() +
+  facet_grid(fct_relevel(field, c("Engineering",
+                                    "Computer and Mathematical sciences", 
+                                    "Physical and Related sciences", 
+                                    "Social and Related sciences", 
+                                    "Science & Engineering Related fields", 
+                                    "Non-science & Engineering fields",
+                                    "Biological, Agricultural, and Environmental Life sciences")) ~ year, 
+             labeller = label_wrap_gen(width = 20), 
+             scales = "fixed") +
+  ylim(0,0.25) +
+  scale_fill_viridis_d(direction = -1, end = 0.97) +
+  theme(strip.text.y = element_text(angle = 0)) +
+  theme_minimal() +
+  labs(
+    title = "2023",
+    x = "",
+    y = "",
+    fill = "")
+
 
 ```
 
