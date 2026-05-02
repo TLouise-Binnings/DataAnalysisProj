@@ -22,7 +22,7 @@ library(paletteer)
 
 ## Data Description
 
-*Here is a description of my data and a link to the source embeded here with references.*
+*Here is a description of my data and a link to the source embedded here with references.*
 
 ## Data Cleaning
 
@@ -75,7 +75,8 @@ tbl2019_stemfields_clean <- read_excel("data-raw/nsf22310-tab001-005.xlsx",
     field == "Engineering" ~ "Engineering",
     field == "Computer and mathematical sciences" ~ "Computer and Mathematical sciences",
     field == "Social and related sciences" ~ "Social and Related sciences",
-    field == "Physical and related sciences" ~ "Physical and Related sciences"))
+    field == "Physical and related sciences" ~ "Physical and Related sciences")) |>
+  mutate(year = 2019)
   
 
 ```
@@ -89,6 +90,7 @@ write_csv(tbl2019_stemfields_clean, file = "data-clean/tbl2019_stemfields_clean.
 
 ```{r}
 #| label: single-code-chunk-clean-data-2023
+#| eval: false
 
 
 tbl2023_stemfields_clean <- read_excel("data-raw/nsf25322-tab001-005.xlsx", 
@@ -133,7 +135,8 @@ tbl2023_stemfields_clean <- read_excel("data-raw/nsf25322-tab001-005.xlsx",
     field == "Engineering" ~ "Engineering",
     field == "Computer and mathematical sciences" ~ "Computer and Mathematical sciences",
     field == "Social and related sciences" ~ "Social and Related sciences",
-    field == "Physical and related sciences" ~ "Physical and Related sciences"))
+    field == "Physical and related sciences" ~ "Physical and Related sciences")) |>
+  mutate(year = 2023)
   
 
 ```
@@ -145,55 +148,6 @@ tbl2023_stemfields_clean <- read_excel("data-raw/nsf25322-tab001-005.xlsx",
 
 write_csv(tbl2023_stemfields_clean, file = "data-clean/tbl2023_stemfields_clean.csv")
 ```
-
-
-
-```{r}
-#| label: ggplot
-#https://r-graph-gallery.com/297-circular-barplot-with-groups.html 
-
-ggplot(tbl2019_stemfields_clean, aes(x=field, y=count, fill=field)) + 
-  geom_col() +
-  coord_polar() +
-  theme_classic() +
-  scale_fill_viridis_d()
-
-```
-
-
-```{r}
-#| label: read-in-2019-degree-types-data
-
-tbl2019_degreetype_raw<- read_excel("data-raw/nsf22310-tab002-001.xlsx",
-                                    skip = 15,
-                                    col_names = c("field", 
-                                               "total", 
-                                               "female", 
-                                               "male",
-                                               "hisp_lat", 
-                                               "amer_ind_alaskan", 
-                                               "asian", 
-                                               "black_afri_amer", 
-                                               "nat_hawaii_pacific_islander", 
-                                               "white", 
-                                               "multi_race", 
-                                               "a", "b"),
-                                    na = c("D", "S", "*")) |>
-  select(c("field", "total", "female", "male", "hisp_lat", "amer_ind_alaskan", "asian", "black_afri_amer", "nat_hawaii_pacific_islander", "white", "multi_race")) 
-
-```
-
-```{r}
-#| label: split-degreetypes-data-sex-race
-
-tbl2019_degreetype_sex <- tbl2019_degreetype_raw |>
-  select(c("field", "total", "female", "male"))
-
-tbl2019_degreetype_ethnicity <- tbl2019_degreetype_raw |>
-  select(c("field", "total", "hisp_lat", "amer_ind_alaskan", "asian", "black_afri_amer", "nat_hawaii_pacific_islander", "white", "multi_race"))
-
-```
-
 
 
 ```{r}
@@ -217,6 +171,38 @@ tbl2023_stemfields_clean_prop <- tbl2023_stemfields_clean |>
   mutate(prop_bysex = count/(sum(count, na.rm = TRUE))) |>
   ungroup() |>
   mutate(prop = count/(sum(count, na.rm = TRUE)))
+
+```
+
+
+
+```{r}
+#| label: ggplot
+#https://r-graph-gallery.com/297-circular-barplot-with-groups.html 
+
+ggplot(tbl2019_stemfields_clean_prop, aes(x = fct_relevel(field, 
+                                                          c("Engineering",
+                                    "Computer and Mathematical sciences", 
+                                    "Physical and Related sciences", 
+                                    "Social and Related sciences", 
+                                    "Science & Engineering Related fields", 
+                                    "Non-science & Engineering fields",
+                                    "Biological, Agricultural, and Environmental Life sciences")), 
+                                          y = count,
+                                    fill = field)) + 
+  geom_col() +
+  labs(y = "Field",
+       x = "Proportions",
+       title = "Representation in Science",
+       fill = "") +
+  theme_minimal() +
+  scale_fill_viridis_d(direction = -1, end = 0.97) +
+  theme(panel.spacing = unit(4, "cm"),
+    legend.position = c(1.8, 0.5),
+    plot.margin = unit(c(2, 6, 2, 2), "cm"),
+    axis.title = element_blank(),
+    axis.text.y = element_blank()) + 
+  coord_polar(clip = "off") 
 
 ```
 
@@ -258,24 +244,51 @@ tbl2019_stemfields_clean_prop |>
   coord_polar(clip = "off") +
   ylim(-0.03, 0.25) 
 
-ggsave("myplot.png", width = 19, height = 8, units = "in")
+ggsave("circlplot_2019malefemale.png", width = 19, height = 8, units = "in")
 ```
 
 ```{r}
+#| label: circular-column-chart-2023
 
 
-tbl2019_stemfields_clean_prop |> 
-  ggplot(aes(x = sex, y = prop, fill = fct_relevel(ethnicity_race, c("White", 
+
+tbl2023_stemfields_clean_prop |> 
+  filter(!is.na(count)) |>
+  ggplot(aes(y = prop,
+             x = fct_relevel(field, c("Engineering",
+                                    "Computer and Mathematical sciences", 
+                                    "Physical and Related sciences", 
+                                    "Social and Related sciences", 
+                                    "Science & Engineering Related fields", 
+                                    "Non-science & Engineering fields",
+                                    "Biological, Agricultural, and Environmental Life sciences")), 
+             fill= fct_relevel(ethnicity_race, c("White", 
                                                  "Asian",
                                                  "Hispanic or Latino",
                                                  "Black or African American", 
                                                  "Other")))) +
-  geom_col(position = "stack") +
-  facet_wrap(~ field) +
-  coord_polar(theta = "y") +
+  geom_col(position = position_stack()) +
+  facet_wrap(~fct_relevel(sex, c("Male", "Female"))) +
+  labs(y = "Field",
+       x = "Proportions",
+       title = "Representation in Science",
+       fill = "") +
+  theme_minimal() +
   scale_fill_viridis_d(direction = -1, end = 0.97) +
-  theme_minimal()
+  theme(panel.spacing = unit(4, "cm"),
+    legend.position = c(1.12, 0.5),
+    plot.margin = unit(c(1, 6, 1, 1), "cm"),
+    axis.title = element_blank(),
+    axis.text.y = element_blank()) + 
+  coord_polar(clip = "off") +
+  ylim(-0.03, 0.25) 
+
+ggsave("circlplot_2023malefemale.png", width = 19, height = 8, units = "in")
 ```
+
+
+
+
 ```{r}
 tbl2019_stemfields_clean_prop |> 
   ggplot(aes(x = sex, y = count/1000, fill = fct_relevel(ethnicity_race, c("White", 
@@ -289,152 +302,65 @@ tbl2019_stemfields_clean_prop |>
   theme_minimal()
 ```
 ```{r}
-tbl2023_stemfields_clean_prop |> 
+
+
+tbl2019_stemfields_clean_prop |> 
   filter(!is.na(count)) |>
-  ggplot(aes(x = fct_relevel(sex, c("male", "female")), y = prop, fill = fct_relevel(ethnicity_race, c("White", 
+  ggplot(aes(x = fct_relevel(sex, c("Male", "Female")), 
+             y = prop, 
+             fill = fct_relevel(ethnicity_race, c("White", 
                                                  "Asian",
                                                  "Hispanic or Latino",
                                                  "Black or African American", 
                                                  "Other")))) +
   geom_col() +
   facet_wrap(~ fct_relevel(field, c("Engineering",
-                                    "Computer and mathematical sciences",
-                                    "Biological, agricultural, and environmental life sciences", 
-                                    "Physical and related sciences", 
-                                    "Social and related sciences", 
-                                    "S&E-related fields", 
-                                    "Non-S&E fields")), 
+                                    "Computer and Mathematical sciences", 
+                                    "Physical and Related sciences", 
+                                    "Social and Related sciences", 
+                                    "Science & Engineering Related fields", 
+                                    "Non-science & Engineering fields",
+                                    "Biological, Agricultural, and Environmental Life sciences")), 
              labeller = label_wrap_gen(width = 20), 
              ncol = 7, 
              scales = "fixed") +
   ylim(0,0.25) +
   scale_fill_viridis_d(direction = -1, end = 0.97) +
-  theme_minimal()
-
-tbl2019_stemfields_clean_prop |> 
-  filter(!is.na(count)) |>
-  ggplot(aes(x = fct_relevel(sex, c("male", "female")), y = prop, fill = fct_relevel(ethnicity_race, c("White", 
-                                                 "Asian",
-                                                 "Hispanic or Latino",
-                                                 "Black or African American", 
-                                                 "Other")))) +
-  geom_col() +
-  facet_wrap(~ fct_relevel(field, c("Engineering",
-                                    "Computer and mathematical sciences",
-                                    "Biological, agricultural, and environmental life sciences", 
-                                    "Physical and related sciences", 
-                                    "Social and related sciences", 
-                                    "S&E-related fields", 
-                                    "Non-S&E fields")), 
-             labeller = label_wrap_gen(width = 20), 
-             ncol = 7, 
-             scales = "fixed") +
-  ylim(0,0.25) +
-  scale_fill_viridis_d(direction = -1, end = 0.97) +
-  theme_minimal()
-```
-
-
-
-```{r}
-tbl2019_stemfields_clean_prop |> 
-  ggplot(aes(y=prop, 
-             x=fct_relevel(field, c("Biological, agricultural, and environmental life sciences", 
-                                            "Computer and mathematical sciences", 
-                                            "Engineering", 
-                                            "Physical and related scientists", 
-                                            "Social and related sciences", 
-                                            "S&E-related fields", 
-                                            "Non-S&E fields")), 
-             fill= sex)) +
-  geom_col(position = position_stack()) +
-  labs(y = "Field",
-       x = "Proportions",
-       title = "Gender Representation in Science",
-       fill = "Ethnicity/Race") +
   theme_minimal() +
-  scale_fill_viridis_d(end = 0.9) +
-  theme(
-    axis.title = element_blank()) + 
-  coord_polar()
-```
+  labs(
+    title = "2019",
+        x = "",
+    y = "",
+    fill = "")
 
-```{r, fig.width = 6, fig.height = 8}
+
 tbl2023_stemfields_clean_prop |> 
   filter(!is.na(count)) |>
-  ggplot(aes(x = fct_relevel(sex, c("male", "female")), y = prop, fill = fct_relevel(ethnicity_race, c("White", 
+  ggplot(aes(x = fct_relevel(sex, c("Male", "Female")), y = prop, fill = fct_relevel(ethnicity_race, c("White", 
                                                  "Asian",
                                                  "Hispanic or Latino",
                                                  "Black or African American", 
                                                  "Other")))) +
-  geom_col(width = 0.2) +
+  geom_col() +
   facet_wrap(~ fct_relevel(field, c("Engineering",
-                                    "Computer and mathematical sciences",
-                                    "Biological, agricultural, and environmental life sciences", 
-                                    "Physical and related sciences", 
-                                    "Social and related sciences", 
-                                    "S&E-related fields", 
-                                    "Non-S&E fields")), 
+                                    "Computer and Mathematical sciences", 
+                                    "Physical and Related sciences", 
+                                    "Social and Related sciences", 
+                                    "Science & Engineering Related fields", 
+                                    "Non-science & Engineering fields",
+                                    "Biological, Agricultural, and Environmental Life sciences")), 
              labeller = label_wrap_gen(width = 20), 
-             ncol = 1, 
+             ncol = 7, 
              scales = "fixed") +
   ylim(0,0.25) +
   scale_fill_viridis_d(direction = -1, end = 0.97) +
-  theme_minimal()
-
-tbl2019_stemfields_clean_prop |> 
-  filter(!is.na(count)) |>
-  ggplot(aes(x = fct_relevel(sex, c("male", "female")), y = prop, fill = fct_relevel(ethnicity_race, c("White", 
-                                                 "Asian",
-                                                 "Hispanic or Latino",
-                                                 "Black or African American", 
-                                                 "Other")))) +
-  geom_col(width = 0.2) +
-  facet_wrap(~ fct_relevel(field, c("Engineering",
-                                    "Computer and mathematical sciences",
-                                    "Biological, agricultural, and environmental life sciences", 
-                                    "Physical and related sciences", 
-                                    "Social and related sciences", 
-                                    "S&E-related fields", 
-                                    "Non-S&E fields")), 
-             labeller = label_wrap_gen(width = 20), 
-             ncol = 1, 
-             scales = "fixed") +
-  ylim(0,0.25) +
-  scale_fill_viridis_d(direction = -1, end = 0.97) +
-  theme_minimal()
-
+  theme_minimal() +
+  labs(
+    title = "2023",
+    x = "",
+    y = "",
+    fill = "")
 
 ```
 
-```{r}
-
-tbl2019_stemfields_clean_prop |> 
-  distinct(field)
-
-tbl2019_stemfields_clean_prop |> 
-  ggplot(aes(x = prop_bysex, y = fct_relevel(field, c("Biological, agricultural, and environmental life sciences",
-                                                  "Computer and mathematical sciences", 
-                                                  "Engineering", 
-                                                  "Physical and related sciences", 
-                                                  "Social and related sciences", 
-                                                  "S&E-related fields", 
-                                                  "Non-S&E fields")), 
-             fill= fct_relevel(ethnicity_race, c("Other", 
-                                                 "Black or African American", 
-                                                 "Hispanic or Latino", 
-                                                 "Asian", 
-                                                 "White")))) +
-  geom_col(position = position_stack()) +
-  labs(y = "Field",
-       x = "Proportions",
-       title = "Representation in Science",
-       fill = "ethnicity/Race") +
-  theme_minimal() + 
-  facet_wrap(~sex) +
-  theme(axis.ticks.x = element_blank()) +
-  scale_fill_viridis_d(end = 0.9)
-  
-  
-```
 
