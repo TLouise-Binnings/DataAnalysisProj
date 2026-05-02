@@ -359,8 +359,7 @@ tbl2019_2023_stemfields_clean_prop <- bind_rows(tbl2019_stemfields_clean_prop, t
 ```
 
 
-```{r, fig.width = 16, fig.height = 14}
-
+```{r}
 
 tbl2019_2023_stemfields_clean_prop |> 
   filter(!is.na(count)) |>
@@ -370,23 +369,24 @@ tbl2019_2023_stemfields_clean_prop |>
                                                  "Black or African American", 
                                                  "Other")))) +
   geom_col() +
-  facet_grid(fct_relevel(field, c("Engineering",
+  facet_grid(factor(year) ~ fct_relevel(field, c("Engineering",
                                     "Computer and Mathematical sciences", 
                                     "Physical and Related sciences", 
                                     "Social and Related sciences", 
                                     "Science & Engineering Related fields", 
                                     "Non-science & Engineering fields",
-                                    "Biological, Agricultural, and Environmental Life sciences")) ~ year, 
+                                    "Biological, Agricultural, and Environmental Life sciences")), 
              labeller = label_wrap_gen(width = 20), 
              scales = "fixed") +
   ylim(0,0.25) +
   scale_fill_viridis_d(direction = -1, end = 0.97) +
-  theme(strip.text.y = element_text(angle = 0)) +
   theme_minimal() +
+  theme(strip.text.y = element_text(angle = 0, size = 12),
+        axis.title.y = element_text(margin = margin(r = 20))) +
   labs(
-    title = "2023",
+    title = "2019 vs. 2023 Distribution of Employed Scientists & Engineers by Sex, Race/Ethnicity, and Major Fields",
     x = "",
-    y = "",
+    y = "Proportion (of all Employed Scientists & Engineers of each year)",
     fill = "")
 
 
