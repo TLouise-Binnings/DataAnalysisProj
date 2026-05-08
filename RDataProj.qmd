@@ -38,6 +38,8 @@ The column for race/ethnicity was compiled to group the smaller counts into a si
 
 Finally, a proportion column was added and calculated to show the proportion of each race/ethnicity within the two sex categories relative to the total of all counts to showcase how the quantity of men and women of various race/ethnicities are represented in STEM as a whole.  
 
+Additionally a column delineated the year for each table was added.  The two tables were joined in order to create the graphic showcasing each bar graph next to each other.
+
 
 ```{r}
 #| label: read-in-and-clean-data
